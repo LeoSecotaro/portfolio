@@ -10,9 +10,10 @@ export const personalDetails = {
   phone: "+54 261 5712839",
   linkedin: "https://www.linkedin.com/in/leonardo-secotaro-ianardi/",
   github: "https://github.com/leonardosecotaro", // link standard
-  cvPath: "/Leonardo_Secotaro_CV_Unificado.pdf",
+  cvPath: "/Leonardo_Secotaro_CV.pdf",
   statusBadge: "Disponible para Desafíos Full Stack & Data",
-  summary: `Ingeniero en Sistemas de Información con una formación integral orientada al desarrollo web full stack, ingeniería de datos, arquitectura de soluciones y ciberseguridad. Especializado en la creación de aplicaciones dinámicas y escalables utilizando Python, Ruby on Rails y React.js. Cuenta con amplia experiencia en pipelines ETL automatizados, integración de modelos de lenguaje (RAG / LLMs), bases de datos SQL y de grafos (Neo4j), así como monitoreo SOC e infraestructura tecnológica under metodologías ágiles.`
+  summary: `Soy Ingeniero en Sistemas de Información, con una formación integral orientada al desarrollo web Full Stack, la ingeniería de datos, la arquitectura de soluciones y la ciberseguridad. Me especializo en crear aplicaciones dinámicas y escalables con Python, Ruby on Rails y React.js. También cuento con experiencia en pipelines ETL automatizados, integración de modelos de lenguaje (RAG / LLMs), bases de datos SQL y de grafos (Neo4j), además de monitoreo SOC e infraestructura tecnológica bajo metodologías ágiles.`,
+  summaryEn: `I am an Information Systems Engineer with a well-rounded background in Full Stack web development, data engineering, solution architecture, and cybersecurity. I specialize in building dynamic, scalable applications with Python, Ruby on Rails, and React.js. I also have experience with automated ETL pipelines, language-model integration (RAG / LLMs), SQL and graph databases (Neo4j), SOC monitoring, and technology infrastructure under agile methodologies.`
 };
 
 export const keyPillars = [
@@ -21,28 +22,32 @@ export const keyPillars = [
     title: "Desarrollo Full Stack",
     description: "Creación de aplicaciones web modernas, robustas y de alto rendimiento utilizando React.js en el frontend y Python / Ruby on Rails en el backend.",
     icon: "Code2",
-    badge: "React · Rails · Python"
+    badge: "React · Rails · Python",
+    en: { title: "Full Stack Development", description: "Building modern, robust, high-performance web applications with React.js on the frontend and Python / Ruby on Rails on the backend." }
   },
   {
     id: "02",
     title: "Ingeniería de Datos & RAG",
     description: "Diseño de pipelines ETL automatizados con Apache Airflow, modelado de grafos con Neo4j y recuperación contextual RAG con LangChain y LLMs.",
     icon: "DatabaseZap",
-    badge: "Airflow · Neo4j · LangChain"
+    badge: "Airflow · Neo4j · LangChain",
+    en: { title: "Data Engineering & RAG", description: "Designing automated ETL pipelines with Apache Airflow, Neo4j graph modeling, and contextual RAG retrieval with LangChain and LLMs." }
   },
   {
     id: "03",
     title: "Bases de Datos & SQL",
     description: "Modelado lógico y físico de arquitecturas de bases de datos relacionales y no relacionales, optimizando consultas complejas para analítica financiera y operaciones.",
     icon: "ServerCog",
-    badge: "SQL · MySQL · Neo4j"
+    badge: "SQL · MySQL · Neo4j",
+    en: { title: "Databases & SQL", description: "Logical and physical modeling of relational and non-relational database architectures, optimizing complex queries for financial analytics and operations." }
   },
   {
     id: "04",
     title: "Infraestructura & SOC",
     description: "Monitoreo de tráfico de red, análisis de vulnerabilidades (Nmap, Wireshark, Snort, Ettercap) y administración avanzada de entornos Linux (Ubuntu).",
     icon: "ShieldCheck",
-    badge: "SOC N1 · Wireshark · Linux"
+    badge: "SOC N1 · Wireshark · Linux",
+    en: { title: "Infrastructure & SOC", description: "Network-traffic monitoring, vulnerability analysis with Nmap, Wireshark, Snort, and Ettercap, plus advanced Linux administration." }
   }
 ];
 
@@ -60,13 +65,21 @@ export const experience = [
       "Implementación de pipelines de integración continua (CI/CD), estructuración de la información académica y construcción de interfaces escalables centradas en el usuario.",
       "Gestión de infraestructura web, instalación de software, configuración de despliegues técnicos y elaboración de informes de rendimiento para garantizar disponibilidad y escalabilidad."
     ],
-    techStack: ["React.js", "Ruby On Rails", "CI/CD", "Linux (Ubuntu)", "REST APIs", "SQL"]
+    techStack: ["React.js", "Ruby On Rails", "CI/CD", "Linux (Ubuntu)", "REST APIs", "SQL"],
+    en: {
+      role: "Full Stack Developer & Web Infrastructure",
+      company: "University Extension Office (UTN)",
+      period: "March 2026 — July 2026",
+      badge: "UTN Extension",
+      description: "End-to-end development, requirements analysis, and availability management for the institutional platform.",
+      bulletPoints: ["Full Stack development, requirements analysis, functional design, and continuous maintenance for the Office website.", "CI/CD implementation, academic-information structuring, and scalable user-centered interfaces.", "Web infrastructure management, deployment configuration, and performance reporting to ensure availability and scalability."]
+    }
   },
   {
-    id: "cardiologia-valle",
+    id: "servicios-cardiologia-sa",
     role: "Desarrollador Full Stack & Data Analyst",
-    company: "Cardiología del Valle",
-    period: "Enero 2026 — Marzo 2026",
+    company: "Servicios de Cardiología SA",
+    period: "Enero 2026 — Marzo 2026 - Actualidad",
     location: "Mendoza, Argentina",
     badge: "Salud & Financiero",
     description: "Construcción de sistemas en tiempo real para turnos médicos y procesamiento de métricas financieras.",
@@ -76,7 +89,14 @@ export const experience = [
       "Desarrollo de consultas SQL eficientes integradas a la visualización del frontend para generar reportes estratégicos decisionales.",
       "Soporte, mantenimiento y monitoreo de los sistemas internos, garantizando la continuidad operativa de la infraestructura y atención de incidencias."
     ],
-    techStack: ["React.js", "SQL / MySQL", "", "ETL", "Monitoreo de Redes"]
+    techStack: ["React.js", "SQL / MySQL", "Ruby On Rails", "ETL", "Linux"],
+    en: {
+      role: "Full Stack Developer & Data Analyst",
+      period: "January 2026 — Present",
+      badge: "Healthcare & Finance",
+      description: "Building real-time systems for medical scheduling and financial-metric processing.",
+      bulletPoints: ["End-to-end development, requirements gathering, and logical design for an interactive real-time medical scheduling system.", "ETL extraction, transformation, and structuring for a financial-metrics comparison module.", "Efficient SQL queries integrated with frontend visualizations for strategic reporting.", "Support, maintenance, and internal-system monitoring to ensure operational continuity."]
+    }
   }
 ];
 
@@ -96,47 +116,72 @@ export const projects = [
       "Interfaz frontend responsiva (Mobile-First) desarrollada con React.js."
     ],
     techStack: ["Ruby on Rails", "React.js", "MySQL", "JavaScript", "HTML5/CSS3", "REST API"],
-    metrics: "Arquitectura Cliente-Servidor decoupled con 100% de vistas responsivas.",
+    metrics: "Arquitectura cliente-servidor desacoplada con 100% de vistas responsivas.",
     gradient: "from-blue-600 to-indigo-600",
-    icon: "Home"
+    icon: "Home",
+    en: {
+      subtitle: "Home Services Platform",
+      summary: "An interactive social platform that connects independent workers with customers looking for home services.",
+      description: "A Full Stack application built with a client-server architecture. Ruby on Rails provides secure authentication, business logic, and REST APIs over MySQL, paired with a responsive React.js interface.",
+      keyFeatures: ["Secure user authentication and role management for customers and providers.", "A scalable Ruby on Rails REST API.", "An optimized MySQL relational database for fast search.", "A responsive, mobile-first React.js frontend."],
+      metrics: "Decoupled client-server architecture with fully responsive views."
+    }
   },
   {
     id: "rag-system",
-    title: "Sistema RAG Acoplado a Grafos",
-    subtitle: "Retrieval-Augmented Generation & Neo4j",
+    title: "Sistema RAG Cinematográfico con Grafos",
+    subtitle: "Proyecto Académico · Neo4j, Ollama & Gemma3:4b",
     category: "Datos e IA",
     badge: "AI / GenAI & Grafos",
-    summary: "Sistema inteligente de recuperación de información académica y planes de estudio mediante lenguaje natural.",
-    description: "Plataforma que combina el modelado de grafos del conocimiento en Neo4j con la integración de modelos de lenguaje (LLM) locales mediante Python y LangChain. Permite consultar correlativas, dependencias y normativas académicas con respuestas libres de alucinaciones.",
+    summary: "Proyecto académico de consulta en lenguaje natural sobre un grafo cinematográfico de películas, géneros, actores y usuarios.",
+    description: "Sistema RAG que modela el dominio cinematográfico en Neo4j e integra el modelo local Gemma3:4b a través de Ollama. El flujo interpreta preguntas en lenguaje natural, consulta el grafo mediante Cypher y genera respuestas contextuales sobre películas, géneros y actores.",
     keyFeatures: [
-      "Modelado conceptual de grafos en Neo4j para mapear entidades y relaciones complejas.",
-      "Integración de LangChain y LLMs locales para la generación contextual en lenguaje natural.",
-      "Consultas avanzadas Cypher para navegar nodos de asignaturas y correlatividades.",
-      "Vectorstore y retriever optimizados para alta precisión de respuesta."
+      "Modelado en Neo4j de nodos Movie, Genre, Actor y User, con relaciones ACTED_IN, HAS_GENRE y RATED.",
+      "Ejecución local de Gemma3:4b con Ollama y configuración mediante variables de entorno.",
+      "Consultas Cypher automáticas para responder preguntas sobre películas, géneros y actores.",
+      "Generación de respuestas contextualizadas a partir de la información estructurada del grafo.",
+      "Base preparada para extender el grafo, incorporar memoria conversacional y automatizar LLM-to-Cypher."
     ],
-    techStack: ["Python", "LangChain", "Neo4j (GraphDB)", "LLMs Locales", "Vector Stores"],
-    metrics: "Respuestas contextuales en tiempo real sobre la totalidad del plan de estudios UTN.",
+    techStack: ["Python", "Neo4j", "Cypher", "Ollama", "Gemma3:4b", "LLM Local"],
+    metrics: "Consultas cinematográficas en lenguaje natural con respuestas contextualizadas desde Neo4j.",
     gradient: "from-purple-600 to-pink-600",
-    icon: "BrainCircuit"
+    icon: "BrainCircuit",
+    en: {
+      title: "Cinematic RAG System with Graphs",
+      subtitle: "Academic Project · Neo4j, Ollama & Gemma3:4b",
+      summary: "An academic natural-language query system over a cinematic graph of movies, genres, actors, and users.",
+      description: "A RAG system that models the movie domain in Neo4j and integrates the local Gemma3:4b model through Ollama. It interprets natural-language questions, queries the graph with Cypher, and produces contextual answers.",
+      keyFeatures: ["Neo4j modeling of Movie, Genre, Actor, and User nodes with ACTED_IN, HAS_GENRE, and RATED relationships.", "Local Gemma3:4b execution with Ollama and environment-variable configuration.", "Automatic Cypher queries for questions about movies, genres, and actors.", "Contextual responses generated from structured graph information.", "A foundation for graph expansion, conversational memory, and LLM-to-Cypher automation."],
+      metrics: "Natural-language movie queries with contextual responses sourced from Neo4j."
+    }
   },
   {
     id: "etl-pipeline",
     title: "Pipeline de Datos Automatizado (ETL)",
     subtitle: "Apache Airflow & API TMDB",
     category: "Datos e IA",
-    badge: "Data Engineering",
-    summary: "Orquestación de flujos de trabajo distribuido para procesar más de 10,000 registros cinemáticos.",
-    description: "Pipeline de ingeniería de datos automatizado que extrae, limpia y transforma datos masivos provenientes de la API REST de TMDB. Diseñado para preparar datasets limpios dirigidos a modelos de entrenamiento de Machine Learning con Scikit-learn.",
+    badge: "Proyecto Académico",
+    summary: "Proyecto académico de ingeniería de datos que procesa más de 10,000 registros cinematográficos para un predictor de ganancias de películas.",
+    description: "Pipeline de ingeniería de datos automatizado que extrae, limpia y transforma datos masivos provenientes de la API REST de TMDB. Los datos normalizados se utilizaron para entrenar un predictor de ganancias de películas con Scikit-learn, considerando actores, fechas de estreno, directores, géneros y otras variables; alcanzó un coeficiente de determinación R² del 79%.",
     keyFeatures: [
       "Orquestación y programación de DAGs en Apache Airflow.",
       "Extracción masiva y manejo de paginación/rate limits en API REST TMDB (+10,000 registros).",
       "Limpieza, normalización e imputación de valores faltantes mediante Python & Pandas.",
-      "Transformación y estructuración de datos para algoritmos de Scikit-Learn."
+      "Transformación y estructuración de datos para un predictor de ganancias con Scikit-Learn."
     ],
     techStack: ["Apache Airflow", "Python", "Pandas", "Scikit-Learn", "REST API", "ETL"],
-    metrics: "Procesamiento de >10,000 registros con automatización de ejecuciones programadas.",
+    metrics: "Predictor de ganancias de películas con datos ETL y un R² (coeficiente de determinación) del 79%.",
     gradient: "from-amber-500 to-rose-500",
-    icon: "Workflow"
+    icon: "Workflow",
+    en: {
+      title: "Automated Data Pipeline (ETL)",
+      subtitle: "Apache Airflow & TMDB API",
+      badge: "Academic Project",
+      summary: "An academic data-engineering project that processes more than 10,000 movie records for a box-office revenue predictor.",
+      description: "An automated data-engineering pipeline that extracts, cleans, and transforms large datasets from the TMDB REST API. The normalized data trained a Scikit-learn movie-revenue predictor using actors, release dates, directors, genres, and other variables, reaching an R² score of 79%.",
+      keyFeatures: ["Airflow DAG orchestration and scheduling.", "Large-scale extraction and pagination/rate-limit handling for the TMDB REST API.", "Cleaning, normalization, and missing-value imputation with Python and Pandas.", "Data transformation for a Scikit-learn revenue predictor."],
+      metrics: "Movie-revenue predictor trained with ETL data, achieving an R² score of 79%."
+    }
   },
   {
     id: "soc-infrastructure",
@@ -156,7 +201,71 @@ export const projects = [
     techStack: ["Wireshark", "Nmap", "Snort", "Ettercap", "Linux (Ubuntu)", "TryHackMe SOC"],
     metrics: "Hardening de red y monitoreo preventivo de paquetes e incidencias.",
     gradient: "from-emerald-500 to-teal-700",
-    icon: "ShieldAlert"
+    icon: "ShieldAlert",
+    en: {
+      title: "Infrastructure & SOC Management",
+      subtitle: "Cybersecurity & Network Monitoring",
+      badge: "SOC & Infrastructure",
+      summary: "Continuous traffic monitoring, vulnerability detection, and hardening in Linux environments.",
+      description: "Implementation of Security Operations Center (SOC) practices for network-traffic auditing, protocol analysis, and threat identification, alongside hardware administration, workstation configuration, and advanced Linux partitioning.",
+      keyFeatures: ["Deep network packet capture and analysis with Wireshark.", "Port and service scanning with Nmap.", "IDS/IPS rule configuration and inspection with Snort.", "Network-security proof-of-concept tests with Ettercap.", "Advanced Ubuntu administration, storage, and partitioning."],
+      metrics: "Network hardening and proactive packet and incident monitoring."
+    }
+  },
+  {
+    id: "seu-utn-platform",
+    title: "Secretaría de Extensión Universitaria",
+    subtitle: "Plataforma Institucional UTN",
+    category: "Full Stack",
+    badge: "Full Stack & CI/CD",
+    summary: "Plataforma institucional desarrollada para centralizar la información académica y los servicios de la Secretaría de Extensión Universitaria.",
+    description: "Desarrollo Full Stack de la página oficial de la Secretaría de Extensión Universitaria de UTN, desde el relevamiento de requerimientos y el diseño funcional hasta el mantenimiento, los despliegues y la mejora continua de la experiencia de usuario.",
+    keyFeatures: [
+      "Desarrollo y mantenimiento de interfaces institucionales escalables centradas en el usuario.",
+      "Análisis de requerimientos y estructuración de información académica.",
+      "Implementación de pipelines CI/CD para despliegues confiables.",
+      "Gestión de infraestructura web, disponibilidad y reportes de rendimiento."
+    ],
+    techStack: ["React.js", "Ruby on Rails", "SQL", "REST APIs", "CI/CD", "Linux"],
+    metrics: "Plataforma institucional con despliegues, mantenimiento y monitoreo continuo.",
+    gradient: "from-cyan-600 to-blue-700",
+    icon: "BookOpen",
+    en: {
+      title: "University Extension Office",
+      subtitle: "UTN Institutional Platform",
+      summary: "An institutional platform built to centralize academic information and services for the University Extension Office.",
+      description: "Full Stack development for the UTN University Extension Office website, from requirements gathering and functional design to maintenance, deployments, and continuous user-experience improvement.",
+      keyFeatures: ["Development and maintenance of scalable, user-centered institutional interfaces.", "Requirements analysis and academic-information structuring.", "CI/CD pipelines for reliable deployments.", "Web infrastructure, availability, and performance-report management."],
+      metrics: "Institutional platform with continuous deployment, maintenance, and monitoring."
+    }
+  },
+  {
+    id: "servicios-cardiologia-sa-proyecto",
+    title: "Servicios de Cardiología SA",
+    subtitle: "Horarios Médicos & ETL Financiero",
+    category: "Full Stack",
+    badge: "HealthTech & Data",
+    summary: "Sistema integral para organizar horarios médicos y procesar información financiera mediante carga y normalización de archivos Excel.",
+    description: "Solución desarrollada para Servicios de Cardiología SA que centraliza la gestión de los horarios de los médicos, sus faltas y reemplazos mediante un calendario propio e interactivo. Además, incorpora un módulo ETL financiero que recibe archivos Excel, normaliza su información y permite compararla con los datos previamente cargados.",
+    keyFeatures: [
+      "Calendario propio e interactivo para la planificación de horarios médicos.",
+      "Relevamiento de requerimientos y diseño lógico de la solución.",
+      "Registro y seguimiento de faltas, disponibilidad y reemplazos.",
+      "Carga de archivos Excel y normalización de datos mediante un proceso ETL.",
+      "Comparación de información financiera cargada para facilitar el análisis operativo."
+    ],
+    techStack: ["React.js", "SQL / MySQL", "ETL", "Excel", "Calendario Interactivo", "REST APIs"],
+    metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",
+    gradient: "from-rose-600 to-red-700",
+    icon: "Heart",
+    en: {
+      title: "Servicios de Cardiología SA",
+      subtitle: "Medical Scheduling & Financial ETL",
+      summary: "An integrated system for medical schedules and financial information processing through Excel upload and normalization.",
+      description: "A solution for Servicios de Cardiología SA that centralizes physician schedules, absences, and replacements through a custom interactive calendar. It also includes a financial ETL module that receives Excel files, normalizes the data, and compares it against previously uploaded records.",
+      keyFeatures: ["A custom interactive calendar for planning physician schedules.", "Requirements gathering and logical solution design.", "Tracking absences, availability, and replacements.", "Excel-file upload and normalization through an ETL process.", "Comparison of uploaded financial information for operational analysis."],
+      metrics: "Centralized physician schedules and normalized financial data ready for comparison."
+    }
   }
 ];
 
@@ -202,7 +311,7 @@ export const education = [
     institution: "Universidad Tecnológica Nacional (UTN)",
     period: "2021 — 2026",
     status: "Carrera Finalizada",
-    description: "Formación de grado enfocada en ingeniería de software, arquitectura de sistemas, bases de datos relacionales/no-relacionales, gestión de proyectos y ciencias de la computación.",
+    description: "Formación de grado enfocada en ingeniería en sistemas de información, arquitectura de sistemas, bases de datos relacionales y no relacionales, gestión de proyectos y ciencias de la computación.",
     badge: "Título Grado UTN"
   },
   {
@@ -230,9 +339,9 @@ export const languages = [
 
 export const softSkills = [
   "Resolución de problemas",
-  "Resiliencia y Paciencia",
+  "Resiliencia y paciencia",
   "Trabajo en equipo colaborativo",
   "Adaptabilidad al cambio",
   "Comunicación técnica efectiva",
-  "Pensamiento analítico de negocios"
+  "Pensamiento analítico de negocio"
 ];

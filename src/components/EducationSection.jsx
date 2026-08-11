@@ -2,22 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, ShieldCheck, Calendar, CheckCircle2 } from 'lucide-react';
 import { education } from '../data/portfolioData';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function EducationSection() {
+  const { t } = useLanguage();
   return (
     <section id="educacion" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
       <div className="section-container">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-24 sm:mb-28 w-full">
+        <div className="section-heading flex flex-col max-w-3xl mx-auto mb-24 sm:mb-28">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            Formación Académica
+            {t('section.educationEyebrow')}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            Educación & Certificaciones
+            {t('section.educationTitle')}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            Título de Grado en Ingeniería y certificaciones internacionales de especialización tecnológica.
+            {t('section.educationDescription')}
           </p>
         </div>
 
@@ -28,16 +30,16 @@ export default function EducationSection() {
               key={item.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: false, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="apple-card card-padding glass-panel border border-white/15 flex flex-col justify-between group hover:border-blue-500/50"
+              className="education-card apple-card card-padding glass-panel border border-white/15 flex flex-col justify-between group hover:border-blue-500/50"
             >
               <div>
                 <div className="flex items-center justify-between mb-6 px-1">
                   <div className="w-14 h-14 rounded-2xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                     {index === 0 ? <GraduationCap className="w-7 h-7" /> : <Award className="w-7 h-7" />}
                   </div>
-                  <span className="text-xs sm:text-sm font-mono px-3.5 py-1.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30 font-semibold">
+                  <span className="education-badge text-xs sm:text-sm font-mono rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30 font-semibold">
                     {item.badge}
                   </span>
                 </div>
@@ -54,7 +56,7 @@ export default function EducationSection() {
                 </p>
               </div>
 
-              <div className="pt-5 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm font-mono text-slate-300 px-1 pb-1">
+              <div className="education-card-footer border-t border-white/10 flex items-center justify-between text-xs sm:text-sm font-mono text-slate-300 px-1">
                 <span className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-blue-400" />
                   {item.period}

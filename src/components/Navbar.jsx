@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Download, Menu, X, Code2, Sparkles, ChevronRight } from 'lucide-react';
-import { personalDetails } from '../data/portfolioData';
+import { Download, Menu, X, ChevronRight, Languages } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const navItems = [
-  { name: 'Inicio', href: '#hero' },
-  { name: 'Perfil', href: '#perfil' },
-  { name: 'Experiencia', href: '#experiencia' },
-  { name: 'Proyectos', href: '#proyectos' },
-  { name: 'Habilidades', href: '#habilidades' },
-  { name: 'Educación', href: '#educacion' },
-  { name: 'Terminal', href: '#terminal' },
-  { name: 'Contacto', href: '#contacto' },
+  { id: 'home', href: '#hero' },
+  { id: 'profile', href: '#perfil' },
+  { id: 'experience', href: '#experiencia' },
+  { id: 'projects', href: '#proyectos' },
+  { id: 'skills', href: '#habilidades' },
+  { id: 'education', href: '#educacion' },
+  { id: 'contact', href: '#contacto' },
+  { id: 'terminal', href: '#terminal' },
 ];
 
 export default function Navbar({ onDownloadCV }) {
+  const { language, toggleLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,7 +71,7 @@ export default function Navbar({ onDownloadCV }) {
             const isActive = activeSection === item.href.substring(1);
             return (
               <a
-                key={item.name}
+                key={item.id}
                 href={item.href}
                 className={`nav-selector-pill relative text-sm font-extrabold rounded-full transition-all duration-300 whitespace-nowrap shrink-0 flex items-center justify-center ${
                   isActive 
@@ -85,7 +86,7 @@ export default function Navbar({ onDownloadCV }) {
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10 px-2 tracking-wide">{item.name}</span>
+                <span className="relative z-10 px-2 tracking-wide">{t(`nav.${item.id}`)}</span>
               </a>
             );
           })}
@@ -93,21 +94,30 @@ export default function Navbar({ onDownloadCV }) {
 
         {/* Action Controls (Download CV & Mobile Menu) */}
         <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={toggleLanguage}
+            className="language-toggle inline-flex items-center justify-center gap-1.5 rounded-full glass-pill border border-white/20 text-xs font-bold text-slate-200 hover:text-white hover:border-blue-400/60 transition-colors"
+            aria-label={t('nav.language')}
+            title={t('nav.language')}
+          >
+            <Languages className="w-4 h-4 text-blue-400" />
+            <span>{language.toUpperCase()}</span>
+          </button>
 
           {/* Download CV CTA - Enlarged */}
           <button
             onClick={onDownloadCV}
-            className="hidden sm:inline-flex apple-btn-primary py-3 px-6 text-sm sm:text-base font-bold gap-2.5 shadow-xl shadow-blue-600/35 whitespace-nowrap"
+            className="navbar-cv hidden sm:inline-flex apple-btn-primary text-sm font-bold shadow-xl shadow-blue-600/35 whitespace-nowrap"
           >
-            <Download className="w-5 h-5" />
-            <span>Descargar CV</span>
+            <Download className="w-4 h-4" />
+            <span>{t('nav.download')}</span>
           </button>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-3 rounded-full glass-pill text-slate-300 hover:text-white"
-            aria-label="Toggle Menu"
+            aria-label={t('nav.menu')}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -126,12 +136,12 @@ export default function Navbar({ onDownloadCV }) {
           >
             {navItems.map((item) => (
               <a
-                key={item.name}
+                key={item.id}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/10 text-base font-medium text-slate-100 transition-colors"
               >
-                <span>{item.name}</span>
+                <span>{t(`nav.${item.id}`)}</span>
                 <ChevronRight className="w-5 h-5 text-slate-400" />
               </a>
             ))}
@@ -143,7 +153,14 @@ export default function Navbar({ onDownloadCV }) {
               className="mt-3 w-full apple-btn-primary py-3.5 text-base font-semibold flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
-              <span>Descargar Curriculum (PDF)</span>
+              <span>{t('common.downloadPdf')}</span>
+            </button>
+            <button
+              onClick={toggleLanguage}
+              className="mt-2 w-full rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-200 flex items-center justify-center gap-2"
+            >
+              <Languages className="w-4 h-4 text-blue-400" />
+              {language === 'es' ? 'English' : 'Español'}
             </button>
           </motion.div>
         )}

@@ -1,8 +1,9 @@
 import React from 'react';
-import { ArrowUp, Code, Heart } from 'lucide-react';
-import { personalDetails } from '../data/portfolioData';
+import { ArrowUp } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -17,7 +18,7 @@ export default function Footer() {
             Leonardo Secotaro Ianardi
           </span>
           <span className="hidden sm:inline text-slate-600">•</span>
-          <span>Ingeniero en Sistemas de Información (UTN)</span>
+          <span>{t('common.informationSystemsEngineer')}</span>
         </div>
 
         {/* Center: Location & Time */}
@@ -30,10 +31,10 @@ export default function Footer() {
         <button
           onClick={scrollToTop}
           className="px-4 py-2 rounded-full glass-pill hover:bg-white/15 text-slate-200 hover:text-white transition-colors flex items-center gap-2 cursor-pointer font-sans text-xs sm:text-sm font-semibold"
-          aria-label="Volver arriba"
+          aria-label={t('common.backToTop')}
         >
           <ArrowUp className="w-4 h-4" />
-          <span>Volver arriba</span>
+          <span>{t('common.backToTop')}</span>
         </button>
 
       </div>

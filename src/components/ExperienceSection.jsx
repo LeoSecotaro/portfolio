@@ -2,33 +2,36 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, MapPin, CheckCircle2, ChevronRight } from 'lucide-react';
 import { experience } from '../data/portfolioData';
+import { localize, useLanguage } from '../i18n/LanguageContext';
 
 export default function ExperienceSection() {
+  const { language, t } = useLanguage();
+  const localizedExperience = experience.map((item) => localize(item, language));
   return (
-    <section id="experiencia" className="w-full scroll-mt-36 py-36 sm:py-48 relative bg-black/30 border-t border-white/10 flex flex-col items-center">
+    <section id="experiencia" className="experience-section w-full scroll-mt-36 py-36 sm:py-48 relative bg-black/30 border-t border-white/10 flex flex-col items-center">
       <div className="section-container experience-section-container">
         
         {/* Section Header */}
         <div className="section-heading experience-heading flex flex-col">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            Trayectoria Profesional
+            {t('section.experienceEyebrow')}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            Experiencia en la Industria & Academia
+            {t('section.experienceTitle')}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            Desarrollo de software a medida, optimización de consultas SQL, análisis de datos y gestión de infraestructura web.
+            {t('section.experienceDescription')}
           </p>
         </div>
 
         {/* Cards Container with Flex Gap Separation and NO Left Blue Line */}
         <div className="experience-cards flex flex-col items-center gap-8 sm:gap-10 md:gap-12 mt-6">
-          {experience.map((item, index) => (
+          {localizedExperience.map((item, index) => (
             <motion.div 
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
+              viewport={{ once: false, margin: '-100px' }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="relative group w-full"
             >

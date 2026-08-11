@@ -5,16 +5,18 @@ import {
   Sparkles, Layers, CheckCircle2 
 } from 'lucide-react';
 import { skills } from '../data/portfolioData';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const skillCategories = [
-  { key: 'desarrollo', label: 'Desarrollo', icon: Code2, color: 'text-blue-400', bg: 'bg-blue-500/20' },
-  { key: 'datos', label: 'Datos & IA', icon: Cpu, color: 'text-indigo-400', bg: 'bg-indigo-500/20' },
-  { key: 'basesDeDatos', label: 'Bases de Datos', icon: Database, color: 'text-purple-400', bg: 'bg-purple-500/20' },
-  { key: 'infraestructura', label: 'Infraestructura', icon: Terminal, color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
-  { key: 'seguridad', label: 'Seguridad & SOC', icon: ShieldCheck, color: 'text-emerald-400', bg: 'bg-emerald-500/20' }
+  { key: 'desarrollo', labelKey: 'development', icon: Code2, color: 'text-blue-400', bg: 'bg-blue-500/20' },
+  { key: 'datos', labelKey: 'data', icon: Cpu, color: 'text-indigo-400', bg: 'bg-indigo-500/20' },
+  { key: 'basesDeDatos', labelKey: 'databases', icon: Database, color: 'text-purple-400', bg: 'bg-purple-500/20' },
+  { key: 'infraestructura', labelKey: 'infrastructure', icon: Terminal, color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
+  { key: 'seguridad', labelKey: 'security', icon: ShieldCheck, color: 'text-emerald-400', bg: 'bg-emerald-500/20' }
 ];
 
 export default function SkillsSection() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('desarrollo');
 
   return (
@@ -28,13 +30,13 @@ export default function SkillsSection() {
         {/* Section Header */}
         <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            Matriz de Competencias
+            {t('section.skillsEyebrow')}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            Habilidades Técnicas & Herramientas
+            {t('section.skillsTitle')}
           </h2>
           <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            Dominio de lenguajes, marcos de trabajo, orquestadores de datos y herramientas de auditoría de red.
+            {t('section.skillsDescription')}
           </p>
         </div>
 
@@ -55,13 +57,13 @@ export default function SkillsSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activeSkillPill"
-                      className="absolute -inset-x-3.5 inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
+                      className="selector-active-pill absolute inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
                   <div className="relative z-10 flex items-center gap-3 px-2">
                     <Icon className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
-                    <span>{cat.label}</span>
+                    <span>{t(`skills.${cat.labelKey}`)}</span>
                   </div>
                 </button>
               );
@@ -83,7 +85,7 @@ export default function SkillsSection() {
               className="apple-card card-padding glass-panel border border-white/15 flex flex-col justify-between hover:border-blue-500/50"
             >
               <div>
-                <div className="flex items-center justify-between gap-3 mb-5 px-1 flex-wrap sm:flex-nowrap">
+                <div className="skill-card-header flex items-center justify-between gap-3 px-1 flex-wrap sm:flex-nowrap">
                   <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5 min-w-0 flex-1">
                     <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
                     <span>{skill.name}</span>
@@ -105,7 +107,7 @@ export default function SkillsSection() {
               </div>
 
               <div className="flex justify-between items-center text-xs sm:text-sm font-mono text-slate-300 mt-2 px-1 pb-1">
-                <span>Nivel de Dominio</span>
+                <span>{t('common.level')}</span>
                 <span className="font-bold text-blue-400 text-sm sm:text-base">{skill.level}%</span>
               </div>
             </div>

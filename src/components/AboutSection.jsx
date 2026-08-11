@@ -5,8 +5,10 @@ import {
   MapPin, Languages, Award, ShieldAlert, Sparkles 
 } from 'lucide-react';
 import { personalDetails, languages, softSkills } from '../data/portfolioData';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function AboutSection() {
+  const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState('resumen');
 
   return (
@@ -20,13 +22,13 @@ export default function AboutSection() {
         {/* Section Header */}
         <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            Resumen Ejecutivo
+            {t('section.aboutEyebrow')}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            Ingeniero en Sistemas de Información
+            {t('section.aboutTitle')}
           </h2>
           <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            Especializado en desarrollo Full Stack, ingeniería de datos y ciberseguridad con enfoque en impacto de negocio.
+            {t('section.aboutDescription')}
           </p>
         </div>
 
@@ -34,9 +36,9 @@ export default function AboutSection() {
         <div className="w-full flex justify-center selector-spacing">
           <div className="selector-bar inline-flex rounded-full glass-panel border border-white/25 flex-wrap justify-center shadow-2xl">
             {[
-              { id: 'resumen', label: 'Visión General' },
-              { id: 'filosofia', label: 'Filosofía & Soft Skills' },
-              { id: 'idiomas', label: 'Idiomas & Certificaciones' },
+              { id: 'resumen', label: t('common.general') },
+              { id: 'filosofia', label: t('common.philosophy') },
+              { id: 'idiomas', label: t('common.languages') },
             ].map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -50,7 +52,7 @@ export default function AboutSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activeAboutPill"
-                      className="absolute -inset-x-3.5 inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
+                      className="selector-active-pill absolute inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -71,19 +73,19 @@ export default function AboutSection() {
         >
           {activeTab === 'resumen' && (
             <>
-              <div className="lg:col-span-7 glass-panel card-padding rounded-3xl border border-white/15">
-                <div className="px-1 py-1">
+              <div className="about-summary-card lg:col-span-7 glass-panel rounded-3xl border border-white/15">
+                <div className="about-summary-content">
                   <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
                     <User className="w-6 h-6 text-blue-400" />
-                    <span>Resumen Ejecutivo</span>
+                    <span>{t('section.aboutEyebrow')}</span>
                   </h3>
                   <p className="text-slate-200 text-base sm:text-lg leading-relaxed mb-8 font-normal">
-                    {personalDetails.summary}
+                    {language === 'en' ? personalDetails.summaryEn : personalDetails.summary}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="about-summary-subcards grid grid-cols-1 sm:grid-cols-2">
                     <div className="about-subcard rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between min-h-[160px]">
                       <div>
-                        <span className="text-xs font-mono text-blue-400 font-bold block mb-1.5 uppercase">UNIVERSIDAD</span>
+                        <span className="text-xs font-mono text-blue-400 font-bold block mb-1.5 uppercase">{t('common.university')}</span>
                         <span className="text-base font-bold text-white block mb-1 leading-snug">Universidad Tecnológica Nacional (UTN)</span>
                       </div>
                       <div className="mt-4 pt-3.5 border-t border-white/10">
@@ -94,7 +96,7 @@ export default function AboutSection() {
 
                     <div className="about-subcard rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between min-h-[160px]">
                       <div>
-                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">ESPECIALIDAD CORE</span>
+                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">{t('common.core')}</span>
                         <span className="text-base font-bold text-white block mb-1 leading-snug">Full Stack & Data Engineering</span>
                       </div>
                       <div className="mt-4 pt-3.5 border-t border-white/10">
@@ -114,7 +116,7 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-base sm:text-lg">Arquitectura & Escalabilidad</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Diseño desacoplado Cliente-Servidor y microservicios.</p>
+                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Diseño arquitecturas desacopladas Cliente-Servidor y microservicios.</p>
                     </div>
                   </div>
                 </div>
@@ -126,7 +128,7 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-base sm:text-lg">Modelado de Grafos & RAG</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Modelado en Neo4j e integración de LLMs con LangChain.</p>
+                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Modelo conocimiento en Neo4j e integro LLMs con LangChain.</p>
                     </div>
                   </div>
                 </div>
@@ -138,7 +140,7 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-base sm:text-lg">Ciberseguridad Operativa</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">TryHackMe SOC Level 1, Wireshark, Snort y Linux Hardening.</p>
+                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Aplico prácticas SOC con TryHackMe, Wireshark, Snort y Linux Hardening.</p>
                     </div>
                   </div>
                 </div>

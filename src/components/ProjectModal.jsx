@@ -4,8 +4,10 @@ import {
   X, CheckCircle, ExternalLink, Database, 
   Code2, Cpu, ShieldCheck, Zap, Server, Activity 
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ProjectModal({ project, onClose }) {
+  const { language, t } = useLanguage();
   if (!project) return null;
 
   return (
@@ -41,7 +43,7 @@ export default function ProjectModal({ project, onClose }) {
               <button
                 onClick={onClose}
                 className="w-10 h-10 rounded-full bg-black/50 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
-                aria-label="Cerrar modal"
+                aria-label={t('common.closePreview')}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -63,7 +65,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Project Summary & Architecture */}
             <div className="project-modal-section">
               <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold mb-3">
-                Resumen de Arquitectura
+                {t('common.architecture')}
               </h3>
               <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
                 {project.description}
@@ -76,7 +78,7 @@ export default function ProjectModal({ project, onClose }) {
                 <Activity className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-mono text-blue-300 font-bold block mb-1">IMPACTO & MÉTRICA DESTACADA</span>
+                <span className="text-xs font-mono text-blue-300 font-bold block mb-1">{t('common.impact')}</span>
                 <span className="text-base font-semibold text-white">{project.metrics}</span>
               </div>
             </div>
@@ -84,7 +86,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Key Features List */}
             <div className="project-modal-section">
               <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 font-semibold mb-4">
-                Características Clave e Implementación
+                {t('common.keyFeatures')}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {project.keyFeatures.map((feature, idx) => (
@@ -99,7 +101,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Tech Stack Pills */}
             <div className="project-modal-section">
               <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-cyan-400 font-semibold mb-4">
-                Tecnologías & Herramientas
+                {t('common.technologies')}
               </h3>
               <div className="flex flex-wrap gap-2.5">
                 {project.techStack.map((tech) => (
@@ -119,14 +121,14 @@ export default function ProjectModal({ project, onClose }) {
           <div className="project-modal-footer border-t border-white/10 bg-slate-900/90 flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-slate-300">
               <Server className="w-4 h-4 text-blue-400" />
-              <span>Proyecto Verificado · Leonardo Secotaro</span>
+              <span>{language === 'es' ? 'Proyecto Verificado · Leonardo Secotaro' : 'Verified Project · Leonardo Secotaro'}</span>
             </div>
 
             <button
               onClick={onClose}
               className="apple-btn-secondary py-2.5 px-6 text-xs sm:text-sm font-semibold cursor-pointer"
             >
-              Cerrar Vista Previa
+              {t('common.closePreview')}
             </button>
           </div>
 

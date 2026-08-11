@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Home, BrainCircuit, Workflow, ShieldAlert, 
+  Home, BrainCircuit, Workflow, ShieldAlert, BookOpen, Heart,
   ExternalLink, Layers, ArrowUpRight, Sparkles 
 } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 import ProjectModal from './ProjectModal';
+import { localize, useLanguage } from '../i18n/LanguageContext';
 
 const iconMap = {
   Home: Home,
   BrainCircuit: BrainCircuit,
   Workflow: Workflow,
-  ShieldAlert: ShieldAlert
+  ShieldAlert: ShieldAlert,
+  BookOpen: BookOpen,
+  Heart: Heart
 };
 
-const categories = ['Todos', 'Full Stack', 'Datos e IA', 'Ciberseguridad'];
+const categories = [
+  { key: 'Todos', labelKey: 'all' },
+  { key: 'Full Stack', labelKey: 'fullStack' },
+  { key: 'Datos e IA', labelKey: 'data' },
+  { key: 'Ciberseguridad', labelKey: 'security' }
+];
 
 export default function ProjectsSection() {
+  const { language, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const localizedProjects = projects.map((project) => localize(project, language));
   const filteredProjects = activeCategory === 'Todos'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
+    ? localizedProjects
+    : localizedProjects.filter(p => p.category === activeCategory);
 
   return (
     <section id="proyectos" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
@@ -35,13 +45,13 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            Portafolio de Proyectos
+            {t('section.projectsEyebrow')}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            Ingeniería & Desarrollo Destacado
+            {t('section.projectsTitle')}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            Selección de plataformas web, arquitecturas RAG y sistemas distribuidos construidos con las tecnologías más modernas.
+            {t('section.projectsDescription')}
           </p>
         </div>
 
@@ -49,11 +59,11 @@ export default function ProjectsSection() {
         <div className="w-full flex flex-wrap items-center justify-center gap-3 selector-spacing">
           <div className="selector-bar inline-flex rounded-full glass-panel border border-white/25 flex-wrap justify-center shadow-2xl">
             {categories.map((cat) => {
-              const isActive = activeCategory === cat;
+              const isActive = activeCategory === cat.key;
               return (
                 <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  key={cat.key}
+                  onClick={() => setActiveCategory(cat.key)}
                   className={`selector-pill relative text-base sm:text-lg font-extrabold rounded-full transition-all duration-300 whitespace-nowrap flex items-center justify-center ${
                     isActive ? 'text-white' : 'text-slate-300 hover:text-white'
                   }`}
@@ -61,11 +71,11 @@ export default function ProjectsSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activeProjectPill"
-                      className="absolute -inset-x-3.5 inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
+                      className="selector-active-pill absolute inset-y-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10 px-2 tracking-wide">{cat}</span>
+                  <span className="relative z-10 px-2 tracking-wide">{t(`projectCategories.${cat.labelKey}`)}</span>
                 </button>
               );
             })}
@@ -81,9 +91,14 @@ export default function ProjectsSection() {
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="apple-card glass-panel border border-white/15 flex flex-col justify-between group overflow-hidden"
+                whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.18 } }}
+                viewport={{ once: false, margin: '-50px' }}
+                transition={{
+                  opacity: { duration: 0.5, delay: index * 0.1 },
+                  y: { duration: 0.18 },
+                  scale: { duration: 0.18 }
+                }}
+                className="project-card apple-card glass-panel border border-white/15 flex flex-col justify-between group overflow-hidden"
               >
                 {/* Project Header Banner with Apple Clearance */}
                 <div className={`bg-gradient-to-r ${project.gradient} project-card-banner min-h-[175px] sm:min-h-[195px] flex flex-col justify-between relative overflow-hidden`}>
@@ -122,7 +137,7 @@ export default function ProjectsSection() {
                       {project.techStack.map((tech) => (
                         <span 
                           key={tech}
-                          className="px-4 py-2 rounded-lg bg-white/10 border border-white/15 text-xs font-mono text-slate-200 font-bold shadow-sm"
+                          className="project-tech-pill rounded-lg bg-white/10 border border-white/15 text-xs font-mono text-slate-200 font-bold shadow-sm"
                         >
                           {tech}
                         </span>
@@ -140,7 +155,7 @@ export default function ProjectsSection() {
                       onClick={() => setSelectedProject(project)}
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-400 group-hover:text-blue-300 cursor-pointer shrink-0"
                     >
-                      <span>Ver Detalles</span>
+                      <span>{t('common.viewDetails')}</span>
                       <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
                   </div>

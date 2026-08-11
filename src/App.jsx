@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import MetricHighlights from './components/MetricHighlights';
@@ -11,8 +11,39 @@ import EducationSection from './components/EducationSection';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import PageSkeleton from './components/PageSkeleton';
+import { useLanguage } from './i18n/LanguageContext';
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    let loadingTimer;
+    const finishLoading = () => {
+      loadingTimer = window.setTimeout(() => setIsLoading(false), 650);
+    };
+
+    if (document.readyState === 'complete') {
+      finishLoading();
+    } else {
+      window.addEventListener('load', finishLoading, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', finishLoading);
+      window.clearTimeout(loadingTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isLoading]);
 
   // Force Dark Mode on html element permanently
   useEffect(() => {
@@ -20,18 +51,35 @@ export default function App() {
     document.documentElement.classList.remove('light');
   }, []);
 
+  // Always open the portfolio from its hero section rather than restoring a prior scroll position.
+  useLayoutEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#hero`);
+
+    const scrollToHero = () => {
+      const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = 'auto';
+      document.getElementById('hero')?.scrollIntoView({ block: 'start' });
+      document.documentElement.style.scrollBehavior = previousScrollBehavior;
+    };
+
+    const frameId = window.requestAnimationFrame(scrollToHero);
+    const timeoutId = window.setTimeout(scrollToHero, 100);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   // Download CV function
   const handleDownloadCV = () => {
-    // Fire confetti effect
-    confetti({
-      particleCount: 100,
-      spread: 80,
-      origin: { y: 0.5 }
-    });
-
+    const cvFile = language === 'en'
+      ? 'Leonardo_Secotaro_CV_English.pdf'
+      : 'Leonardo_Secotaro_CV.pdf';
     const link = document.createElement('a');
-    link.href = '/Leonardo_Secotaro_CV_Unificado.pdf';
-    link.download = 'Leonardo_Secotaro_CV_Unificado.pdf';
+    link.href = `/${cvFile}`;
+    link.download = cvFile;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -39,6 +87,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black text-slate-100 dark">
+      <AnimatePresence>
+        {isLoading && <PageSkeleton />}
+      </AnimatePresence>
       
       {/* Dynamic Header Navbar */}
       <Navbar
@@ -46,7 +97,7 @@ export default function App() {
       />
 
       {/* Main Single Page Content with Generous Section Spacing */}
-      <main className="flex flex-col gap-24 sm:gap-36 md:gap-48 pb-20">
+      <main className="flex flex-col gap-12 sm:gap-16 md:gap-20 pb-16">
         <HeroSection onDownloadCV={handleDownloadCV} />
         <MetricHighlights />
         <AboutSection />
@@ -54,8 +105,8 @@ export default function App() {
         <ProjectsSection />
         <SkillsSection />
         <EducationSection />
-        <InteractiveTerminal onDownloadCV={handleDownloadCV} />
         <ContactSection onDownloadCV={handleDownloadCV} />
+        <InteractiveTerminal onDownloadCV={handleDownloadCV} />
       </main>
 
       {/* Apple Minimalist Footer */}
