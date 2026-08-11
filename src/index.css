@@ -1,0 +1,779 @@
+@import "tailwindcss";
+
+/* Apple-Style Global CSS & Design System */
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-sans);
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Dark Theme (Apple Space Black Default) */
+  --bg-main: #000000;
+  --bg-surface: #0b0b0f;
+  --bg-surface-elevated: #16161f;
+  --text-main: #f5f5f7;
+  --text-muted: #9898a0;
+  --text-subtle: #6e6e73;
+  --accent-blue: #0071e3;
+  --accent-blue-hover: #0077ed;
+  --accent-indigo: #6366f1;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --accent-purple: #a855f7;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --glass-bg: rgba(18, 18, 26, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  --badge-bg: rgba(0, 113, 227, 0.15);
+  --badge-border: rgba(0, 113, 227, 0.3);
+  --badge-text: #2997ff;
+
+  --card-hover-glow: rgba(0, 113, 227, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body,
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enforce perfect section container centering with ample margin */
+.section-container {
+  width: 100%;
+  max-width: 80rem;
+  /* 1280px */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Shared alignment for the introductory copy in every portfolio section. */
+.section-heading {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.section-heading > * {
+  text-align: center;
+}
+
+/* Keeps hero content clear of the fixed navigation without affecting the navbar. */
+.hero-section {
+  padding-top: 10rem;
+}
+
+/* Hero profile card: offset and internal rhythm distinct from the text column. */
+.hero-profile-column {
+  margin-top: 2rem;
+}
+
+.hero-profile-card {
+  padding: 1.5rem !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero-profile-content {
+  padding: 0.25rem !important;
+}
+
+.hero-profile-topbar {
+  padding-bottom: 0.85rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.hero-profile-header {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem !important;
+}
+
+.hero-profile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.15rem;
+}
+
+.hero-profile-row {
+  padding: 0.75rem 1rem !important;
+}
+
+.hero-profile-footer {
+  padding-top: 1rem !important;
+  padding-bottom: 0 !important;
+}
+
+/* Extra breathing room before the professional-experience cards. */
+.experience-heading {
+  width: min(100%, 64rem) !important;
+  max-width: 64rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center;
+  margin-bottom: 3rem;
+}
+
+.experience-cards {
+  width: min(100%, 72rem) !important;
+  max-width: 72rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center;
+}
+
+.experience-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Prevent date and technology labels from sitting against their pill borders. */
+.experience-date-pill {
+  padding: 0.75rem 1.25rem !important;
+}
+
+.experience-stack-pill {
+  padding: 0.4rem 0.7rem !important;
+}
+
+/* Breathing room around the separators inside each experience card. */
+.experience-card-header {
+  padding-bottom: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.experience-description {
+  margin-bottom: 1.5rem !important;
+}
+
+.experience-bullets {
+  margin-bottom: 1.5rem !important;
+}
+
+.experience-stack {
+  padding-top: 1.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.experience-card {
+  padding-bottom: 1rem !important;
+}
+
+/* Comfortable rhythm for the project quick-look modal. */
+.project-modal-header {
+  padding: 1.75rem 2rem !important;
+}
+
+.project-modal-body {
+  padding: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-modal-section h3 {
+  margin-bottom: 0.85rem !important;
+}
+
+.project-modal-metric {
+  padding: 1.25rem 1.5rem !important;
+}
+
+.project-modal-badge {
+  padding: 0.5rem 0.9rem !important;
+}
+
+.project-modal-feature {
+  padding: 1.1rem 1.25rem !important;
+}
+
+.project-modal-tech-pill {
+  padding: 0.55rem 0.85rem !important;
+}
+
+.project-modal-footer {
+  padding: 1.25rem 2rem !important;
+}
+
+.about-feature-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Soft-skills tab: clear hierarchy and comfortable individual cards. */
+.soft-skills-panel {
+  padding: 2rem !important;
+}
+
+.soft-skills-title {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.soft-skills-grid {
+  gap: 1rem;
+}
+
+.soft-skill-card {
+  min-height: 5.5rem;
+  padding: 1rem 1.25rem !important;
+}
+
+.languages-card,
+.location-card {
+  padding: 2rem !important;
+}
+
+.about-panel-title {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.language-item {
+  padding: 1rem 1.25rem !important;
+}
+
+.language-badge {
+  padding: 0.45rem 0.75rem !important;
+}
+
+.location-description {
+  margin-bottom: 1.75rem !important;
+}
+
+.availability-badge {
+  padding: 1rem 1.25rem !important;
+}
+
+@media (min-width: 640px) {
+  .experience-date-pill {
+    padding: 0.875rem 1.5rem !important;
+  }
+
+  .experience-stack-pill {
+    padding: 0.5rem 0.85rem !important;
+  }
+
+  .experience-card-header {
+    padding-bottom: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .experience-stack {
+    padding-top: 1.5rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  .experience-card {
+    padding-bottom: 1.25rem !important;
+  }
+
+  .project-modal-header {
+    padding: 2rem 2.5rem !important;
+  }
+
+  .project-modal-body {
+    padding: 2.25rem 2.5rem !important;
+    gap: 2.25rem;
+  }
+
+  .project-modal-metric {
+    padding: 1.5rem 1.75rem !important;
+  }
+
+  .project-modal-badge {
+    padding: 0.6rem 1.1rem !important;
+  }
+
+  .project-modal-feature {
+    padding: 1.25rem 1.5rem !important;
+  }
+
+  .project-modal-tech-pill {
+    padding: 0.65rem 1rem !important;
+  }
+
+  .project-modal-footer {
+    padding: 1.5rem 2.5rem !important;
+  }
+
+  .about-feature-cards {
+    gap: 2rem;
+  }
+
+  .soft-skills-panel {
+    padding: 2.5rem !important;
+  }
+
+  .soft-skills-title {
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem !important;
+  }
+
+  .soft-skills-grid {
+    gap: 1.25rem;
+  }
+
+  .soft-skill-card {
+    min-height: 6rem;
+    padding: 1.25rem 1.5rem !important;
+  }
+
+  .languages-card,
+  .location-card {
+    padding: 2.5rem !important;
+  }
+
+  .about-panel-title {
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem !important;
+  }
+
+  .languages-list {
+    gap: 1.25rem;
+  }
+
+  .language-item {
+    padding: 1.25rem 1.5rem !important;
+  }
+
+  .language-badge {
+    padding: 0.55rem 0.9rem !important;
+  }
+
+  .availability-badge {
+    padding: 1.25rem 1.5rem !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-section {
+    padding-top: 13rem;
+  }
+
+  .hero-profile-card {
+    padding: 1.5rem !important;
+  }
+
+  .hero-profile-row {
+    padding: 0.9rem 1.15rem !important;
+  }
+
+  .hero-profile-topbar {
+    padding-bottom: 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-profile-header {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-profile-stack {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-profile-footer {
+    padding-top: 1.25rem !important;
+    padding-bottom: 0.15rem !important;
+  }
+
+  .experience-heading {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-profile-column {
+    margin-top: 4rem;
+  }
+}
+
+/* Dedicated Selector Bar Separation Utility - Closer Sweet Spot */
+.selector-spacing {
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Explicit selector padding keeps inactive labels inside their pill controls. */
+.selector-bar {
+  gap: 0.4rem;
+  padding: 0 !important;
+}
+
+.selector-pill {
+  min-height: 2.4rem;
+  padding: 0.35rem 0.75rem !important;
+}
+
+.selector-pill > span {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar-selector {
+  gap: 0.25rem;
+  padding: 0 !important;
+}
+
+.nav-selector-pill {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.55rem !important;
+}
+
+.nav-selector-pill > span {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (min-width: 640px) {
+  .selector-bar {
+    gap: 0.5rem;
+    padding: 0 !important;
+  }
+
+  .selector-pill {
+    min-height: 2.6rem;
+    padding: 0.45rem 0.95rem !important;
+  }
+
+  .selector-spacing {
+    margin-top: 2rem !important;
+    margin-bottom: 2.75rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .selector-spacing {
+    margin-top: 2rem !important;
+    margin-bottom: 2.75rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+/* Card Badge Capsule - Sleek Fine-Tuned Spot */
+.card-badge-capsule {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  border-radius: 9999px !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (min-width: 640px) {
+  .card-badge-capsule {
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Custom Typography Utility Classes */
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  line-height: 1.15;
+}
+
+h2 {
+  line-height: 1.25;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  line-height: 1.3;
+}
+
+p {
+  line-height: 1.65;
+}
+
+/* Apple Metallic & Gradient Text */
+.text-apple-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .text-apple-gradient {
+  background: linear-gradient(135deg, #1d1d1f 0%, #434346 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-blue-gradient {
+  background: linear-gradient(135deg, #2997ff 0%, #6366f1 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Apple Frosted Glass Cards */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+.light .glass-pill {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Hover Shimmer & Card Interactive Effects */
+.apple-card {
+  position: relative;
+  border-radius: 1.25rem;
+  /* 20px sleek Apple corners */
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Ideal midpoint padding for all cards: sleek, compact, with 36px lateral clearance */
+.card-padding {
+  padding: 1.25rem 1.5rem !important;
+}
+
+@media (min-width: 640px) {
+  .card-padding {
+    padding: 1.75rem 2.25rem !important;
+  }
+}
+
+/* Precise Apple-style padding for project cards & executive summary sub-cards */
+.project-card-banner,
+.about-subcard {
+  padding: 1.1rem 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 640px) {
+
+  .project-card-banner,
+  .about-subcard {
+    padding: 1.25rem 1.45rem !important;
+  }
+}
+
+.apple-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px var(--card-hover-glow);
+}
+
+/* Subtle background grid mesh */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.light .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* Ambient Radial Glow Orbs */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Magnetic / Apple-style Button */
+.apple-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-blue);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+  text-decoration: none;
+}
+
+.apple-btn-primary:hover {
+  background: var(--accent-blue-hover);
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.45);
+}
+
+.apple-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+}
+
+.light .apple-btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--border-strong);
+  transform: scale(1.03);
+}
+
+.light .apple-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Pulse indicator animation */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Code block terminal style */
+.terminal-window {
+  background: #09090d;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  font-family: var(--font-mono);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
