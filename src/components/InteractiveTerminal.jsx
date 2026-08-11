@@ -13,10 +13,13 @@ export default function InteractiveTerminal({ onDownloadCV }) {
   const { t } = useLanguage();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState(initialOutput);
-  const bottomRef = useRef(null);
+  const terminalOutputRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const terminalOutput = terminalOutputRef.current;
+    if (terminalOutput) {
+      terminalOutput.scrollTo({ top: terminalOutput.scrollHeight, behavior: 'smooth' });
+    }
   }, [history]);
 
   const handleCommand = (cmdStr) => {
@@ -157,7 +160,7 @@ LinkedIn : ${personalDetails.linkedin}`
           </div>
 
           {/* Console Stream */}
-          <div className="h-72 sm:h-80 overflow-y-auto font-mono text-xs sm:text-base space-y-2.5 pr-2">
+          <div ref={terminalOutputRef} className="h-72 sm:h-80 overflow-y-auto font-mono text-xs sm:text-base space-y-2.5 pr-2">
             {history.map((item, idx) => (
               <div key={idx} className="leading-relaxed">
                 {item.type === 'system' && (
@@ -173,7 +176,6 @@ LinkedIn : ${personalDetails.linkedin}`
                 )}
               </div>
             ))}
-            <div ref={bottomRef} />
           </div>
 
           {/* Form Input Line */}
