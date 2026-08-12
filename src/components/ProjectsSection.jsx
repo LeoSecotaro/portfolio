@@ -98,7 +98,17 @@ export default function ProjectsSection() {
                   y: { duration: 0.18 },
                   scale: { duration: 0.18 }
                 }}
-                className="project-card apple-card glass-panel border border-white/15 flex flex-col justify-between group overflow-hidden"
+                role="button"
+                tabIndex={0}
+                aria-label={`${t('common.viewDetails')}: ${project.title}`}
+                onClick={() => setSelectedProject(project)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedProject(project);
+                  }
+                }}
+                className="project-card apple-card glass-panel border border-white/15 flex flex-col justify-between group overflow-hidden cursor-pointer"
               >
                 {/* Project Header Banner with Apple Clearance */}
                 <div className={`bg-gradient-to-r ${project.gradient} project-card-banner min-h-[175px] sm:min-h-[195px] flex flex-col justify-between relative overflow-hidden`}>
@@ -151,13 +161,10 @@ export default function ProjectsSection() {
                       {project.metrics}
                     </span>
 
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-400 group-hover:text-blue-300 cursor-pointer shrink-0"
-                    >
+                    <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-400 group-hover:text-blue-300 shrink-0">
                       <span>{t('common.viewDetails')}</span>
                       <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </button>
+                    </span>
                   </div>
 
                 </div>

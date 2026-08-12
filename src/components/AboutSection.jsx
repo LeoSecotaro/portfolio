@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  User, CheckCircle, Globe, BookOpen, Cpu, Lightbulb, 
-  MapPin, Languages, Award, ShieldAlert, Sparkles 
+  User, CheckCircle, Globe, Lightbulb, 
+  MapPin, Languages, Award, Sparkles 
 } from 'lucide-react';
 import { personalDetails, languages, softSkills } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -73,7 +73,7 @@ export default function AboutSection() {
         >
           {activeTab === 'resumen' && (
             <>
-              <div className="about-summary-card lg:col-span-7 glass-panel rounded-3xl border border-white/15">
+              <div className="about-summary-card lg:col-span-12 glass-panel rounded-3xl border border-white/15">
                 <div className="about-summary-content">
                   <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
                     <User className="w-6 h-6 text-blue-400" />
@@ -96,55 +96,18 @@ export default function AboutSection() {
 
                     <div className="about-subcard rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between min-h-[160px]">
                       <div>
-                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">{t('common.core')}</span>
-                        <span className="text-base font-bold text-white block mb-1 leading-snug">Full Stack & Data Engineering</span>
+                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">Enfoque profesional</span>
+                        <span className="text-base font-bold text-white block mb-1 leading-snug">Análisis, Full Stack & Datos</span>
                       </div>
                       <div className="mt-4 pt-3.5 border-t border-white/10">
                         <span className="text-xs text-slate-300 block font-medium">Python · Rails · React</span>
-                        <span className="text-xs font-mono text-emerald-400 font-semibold block mt-1">Airflow · RAG · Neo4j</span>
+                        <span className="text-xs font-mono text-emerald-400 font-semibold block mt-1">Airflow · RAG · Neo4j · SOC</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="about-feature-cards lg:col-span-5">
-                <div className="apple-card card-padding glass-panel border border-white/15">
-                  <div className="flex items-center gap-4 px-1 py-1">
-                    <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                      <Cpu className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-base sm:text-lg">Arquitectura & Escalabilidad</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Diseño arquitecturas desacopladas Cliente-Servidor y microservicios.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="apple-card card-padding glass-panel border border-white/15">
-                  <div className="flex items-center gap-4 px-1 py-1">
-                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
-                      <BookOpen className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-base sm:text-lg">Modelado de Grafos & RAG</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Modelo conocimiento en Neo4j e integro LLMs con LangChain.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="apple-card card-padding glass-panel border border-white/15">
-                  <div className="flex items-center gap-4 px-1 py-1">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                      <ShieldAlert className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-base sm:text-lg">Ciberseguridad Operativa</h4>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1">Aplico prácticas SOC con TryHackMe, Wireshark, Snort y Linux Hardening.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </>
           )}
 

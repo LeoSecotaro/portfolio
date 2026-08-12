@@ -12,7 +12,7 @@ export const personalDetails = {
   github: "https://github.com/leonardosecotaro", // link standard
   cvPath: "/Leonardo_Secotaro_CV.pdf",
   statusBadge: "Disponible para Desafíos Full Stack & Data",
-  summary: `Soy Ingeniero en Sistemas de Información, con una formación integral orientada al desarrollo web Full Stack, la ingeniería de datos, la arquitectura de soluciones y la ciberseguridad. Me especializo en crear aplicaciones dinámicas y escalables con Python, Ruby on Rails y React.js. También cuento con experiencia en pipelines ETL automatizados, integración de modelos de lenguaje (RAG / LLMs), bases de datos SQL y de grafos (Neo4j), además de monitoreo SOC e infraestructura tecnológica bajo metodologías ágiles.`,
+  summary: `Soy Ingeniero en Sistemas de Información, con una formación integral orientada al análisis de sistemas, el diseño de soluciones, el desarrollo web Full Stack, la ingeniería de datos y la ciberseguridad. Me dedico a analizar requerimientos y construir soluciones integrales, desde aplicaciones dinámicas y escalables con Python, Ruby on Rails y React.js hasta pipelines ETL automatizados con Airflow y modelos de lenguaje acoplados a grafos con Neo4j. También cuento con experiencia en bases de datos SQL, monitoreo SOC e infraestructura tecnológica bajo metodologías ágiles.`,
   summaryEn: `I am an Information Systems Engineer with a well-rounded background in Full Stack web development, data engineering, solution architecture, and cybersecurity. I specialize in building dynamic, scalable applications with Python, Ruby on Rails, and React.js. I also have experience with automated ETL pipelines, language-model integration (RAG / LLMs), SQL and graph databases (Neo4j), SOC monitoring, and technology infrastructure under agile methodologies.`
 };
 
@@ -36,7 +36,7 @@ export const keyPillars = [
   {
     id: "03",
     title: "Bases de Datos & SQL",
-    description: "Modelado lógico y físico de arquitecturas de bases de datos relacionales y no relacionales, optimizando consultas complejas para analítica financiera y operaciones.",
+    description: "Modelado lógico y físico de arquitecturas de bases de datos relacionales y no relacionales, con optimización de consultas complejas.",
     icon: "ServerCog",
     badge: "SQL · MySQL · Neo4j",
     en: { title: "Databases & SQL", description: "Logical and physical modeling of relational and non-relational database architectures, optimizing complex queries for financial analytics and operations." }
@@ -116,7 +116,7 @@ export const projects = [
       "Interfaz frontend responsiva (Mobile-First) desarrollada con React.js."
     ],
     techStack: ["Ruby on Rails", "React.js", "MySQL", "JavaScript", "HTML5/CSS3", "REST API"],
-    metrics: "Arquitectura cliente-servidor desacoplada con 100% de vistas responsivas.",
+    metrics: "Arquitectura Cliente-Servidor decoupled con 100% de vistas responsivas.",
     gradient: "from-blue-600 to-indigo-600",
     icon: "Home",
     en: {
@@ -311,7 +311,7 @@ export const education = [
     institution: "Universidad Tecnológica Nacional (UTN)",
     period: "2021 — 2026",
     status: "Carrera Finalizada",
-    description: "Formación de grado enfocada en ingeniería en sistemas de información, arquitectura de sistemas, bases de datos relacionales y no relacionales, gestión de proyectos y ciencias de la computación.",
+    description: "Formación de grado enfocada en ingeniería en sistemas de información, arquitectura de sistemas, bases de datos relacionales/no-relacionales, gestión de proyectos y ciencias de la computación.",
     badge: "Título Grado UTN"
   },
   {
@@ -339,9 +339,9 @@ export const languages = [
 
 export const softSkills = [
   "Resolución de problemas",
-  "Resiliencia y paciencia",
+  "Resiliencia y Paciencia",
   "Trabajo en equipo colaborativo",
   "Adaptabilidad al cambio",
   "Comunicación técnica efectiva",
-  "Pensamiento analítico de negocio"
+  "Pensamiento analítico de negocios"
 ];

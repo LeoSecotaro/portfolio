@@ -20,7 +20,7 @@ export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState('desarrollo');
 
   return (
-    <section id="habilidades" className="w-full scroll-mt-36 py-36 sm:py-48 relative bg-black/40 border-t border-white/10 flex flex-col items-center">
+    <section id="habilidades" className="w-full scroll-mt-36 pt-48 pb-36 sm:pt-56 sm:pb-48 relative bg-black/40 border-t border-white/10 flex flex-col items-center">
       
       {/* Background glow */}
       <div className="glow-orb top-1/2 right-1/4 w-[450px] h-[450px] bg-cyan-600/10" />
@@ -28,7 +28,7 @@ export default function SkillsSection() {
       <div className="section-container relative z-10">
         
         {/* Section Header */}
-        <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="section-heading skills-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
             {t('section.skillsEyebrow')}
           </span>

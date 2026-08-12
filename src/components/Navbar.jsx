@@ -153,7 +153,7 @@ export default function Navbar({ onDownloadCV }) {
               className="mt-3 w-full apple-btn-primary py-3.5 text-base font-semibold flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
-              <span>{t('common.downloadPdf')}</span>
+              <span>{t('nav.download')}</span>
             </button>
             <button
               onClick={toggleLanguage}
