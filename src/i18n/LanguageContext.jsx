@@ -8,15 +8,15 @@ const translations = {
     },
     section: {
       pillarsEyebrow: 'Pilares Tecnológicos', pillarsTitle: 'Tecnologías y soluciones', pillarsDescription: 'Soluciones integrales que combinan desarrollo Full Stack, datos e IA, bases de datos, infraestructura y seguridad.',
-      aboutEyebrow: 'Resumen Ejecutivo', aboutTitle: 'Ingeniero en Sistemas de Información', aboutDescription: 'Especializado en desarrollo Full Stack, ingeniería de datos y ciberseguridad con enfoque en impacto de negocio.',
+      profileEyebrow: 'Perfil Profesional', aboutEyebrow: 'Resumen Ejecutivo', aboutTitle: 'Ingeniero en Sistemas de Información', aboutDescription: 'Especializado en desarrollo Full Stack, ingeniería de datos y ciberseguridad con enfoque en impacto de negocio.',
       experienceEyebrow: 'Trayectoria Profesional', experienceTitle: 'Experiencia en la Industria & Academia', experienceDescription: 'Desarrollo de software a medida, optimización de consultas SQL, análisis de datos y gestión de infraestructura web.',
       projectsEyebrow: 'Portafolio de Proyectos', projectsTitle: 'Ingeniería & Desarrollo Destacado', projectsDescription: 'Selección de plataformas web, arquitecturas RAG y sistemas distribuidos construidos con las tecnologías más modernas.',
       skillsEyebrow: 'Matriz de Competencias', skillsTitle: 'Habilidades Técnicas & Herramientas', skillsDescription: 'Dominio de lenguajes, marcos de trabajo, orquestadores de datos y herramientas de auditoría de red.',
       educationEyebrow: 'Formación Académica', educationTitle: 'Educación & Certificaciones', educationDescription: 'Título de Grado en Ingeniería y certificaciones internacionales de especialización tecnológica.',
-      contactEyebrow: 'Iniciemos una Conversación', contactTitle: 'Contacto & Oportunidades', contactDescription: '¿Tienes un proyecto en mente o buscas sumar un Ingeniero Full Stack / Data a tu equipo?',
-      terminalTitle: 'Consola Interactiva CLI', terminalDescription: 'Si quieres entretenerte un rato, puedes explorar mi información desde esta terminal.'
+      contactEyebrow: 'Iniciemos una Conversación', contactTitle: 'Contacto & Oportunidades', contactDescription: '¿Tenés un proyecto en mente o buscás sumar un Ingeniero Full Stack / Data a tu equipo?',
+      terminalTitle: 'Consola Interactiva CLI', terminalDescription: 'Si querés entretenerte un rato, podés explorar mi información desde esta terminal.'
     },
-    common: { viewDetails: 'Ver Detalles', closePreview: 'Cerrar Vista Previa', technologies: 'Tecnologías & Herramientas', keyFeatures: 'Características Clave e Implementación', architecture: 'Resumen de Arquitectura', impact: 'Impacto & Métrica Destacada', level: 'Nivel de Dominio', downloadPdf: 'Descargar PDF', linkedin: 'Perfil de LinkedIn', email: 'Correo electrónico', phone: 'Teléfono / WhatsApp', cvTitle: 'Curriculum Vitae', cvDescription: 'Descarga la versión PDF lista para imprimir.', university: 'Universidad', core: 'Especialidad Core', general: 'Visión General', philosophy: 'Filosofía & Soft Skills', languages: 'Idiomas & Certificaciones', academicProject: 'Proyecto Académico', backToTop: 'Volver arriba', informationSystemsEngineer: 'Ingeniero en Sistemas de Información (UTN)' },
+    common: { viewDetails: 'Ver Detalles', closePreview: 'Cerrar Vista Previa', technologies: 'Tecnologías & Herramientas', keyFeatures: 'Características Clave e Implementación', architecture: 'Resumen de Arquitectura', impact: 'Impacto & Métrica Destacada', level: 'Nivel de Dominio', downloadPdf: 'Descargar PDF', linkedin: 'Perfil de LinkedIn', email: 'Correo electrónico', phone: 'Teléfono / WhatsApp', cvTitle: 'Curriculum Vitae', cvDescription: 'Descargá la versión PDF lista para imprimir.', university: 'Universidad', core: 'Especialidad Core', general: 'Visión General', philosophy: 'Filosofía & Soft Skills', languages: 'Idiomas & Certificaciones', academicProject: 'Proyecto Académico', backToTop: 'Volver arriba', informationSystemsEngineer: 'Ingeniero en Sistemas de Información (UTN)' },
     skills: { development: 'Desarrollo', data: 'Datos & IA', databases: 'Bases de Datos', infrastructure: 'Infraestructura', security: 'Seguridad & SOC' },
     projectCategories: { all: 'Todos', fullStack: 'Full Stack', data: 'Datos e IA', security: 'Ciberseguridad' }
   },
@@ -27,7 +27,7 @@ const translations = {
     },
     section: {
       pillarsEyebrow: 'Technology Pillars', pillarsTitle: 'End-to-end solutions with engineering precision', pillarsDescription: 'Hands-on expertise spanning network infrastructure and security, generative AI pipelines, and interactive frontends.',
-      aboutEyebrow: 'Executive Summary', aboutTitle: 'Information Systems Engineer', aboutDescription: 'Specialized in Full Stack development, data engineering, and cybersecurity with a business-impact mindset.',
+      profileEyebrow: 'Professional Profile', aboutEyebrow: 'Executive Summary', aboutTitle: 'Information Systems Engineer', aboutDescription: 'Specialized in Full Stack development, data engineering, and cybersecurity with a business-impact mindset.',
       experienceEyebrow: 'Professional Journey', experienceTitle: 'Industry & Academic Experience', experienceDescription: 'Custom software development, SQL query optimization, data analysis, and web infrastructure management.',
       projectsEyebrow: 'Project Portfolio', projectsTitle: 'Featured Engineering & Development', projectsDescription: 'A selection of web platforms, RAG architectures, and distributed systems built with modern technologies.',
       skillsEyebrow: 'Skills Matrix', skillsTitle: 'Technical Skills & Tools', skillsDescription: 'Expertise in languages, frameworks, data orchestrators, and network-auditing tools.',

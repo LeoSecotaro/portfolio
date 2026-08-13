@@ -85,8 +85,8 @@ export default function SkillsSection() {
               className="apple-card card-padding glass-panel border border-white/15 flex flex-col justify-between hover:border-blue-500/50"
             >
               <div>
-                <div className="skill-card-header flex items-center justify-between gap-3 px-1 flex-wrap sm:flex-nowrap">
-                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5 min-w-0 flex-1">
+                <div className="skill-card-header flex flex-col items-start gap-3 px-1">
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5 min-w-0 w-full">
                     <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
                     <span>{skill.name}</span>
                   </h3>

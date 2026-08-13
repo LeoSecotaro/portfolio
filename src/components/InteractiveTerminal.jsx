@@ -6,7 +6,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 const initialOutput = [
   { type: 'system', text: ' Leonardo Secotaro Pro Terminal (v2.6.0-ISI)' },
-  { type: 'system', text: 'Escribe "help" o selecciona una de las sugerencias rápidas para consultar datos.' }
+  { type: 'system', text: 'Escribí "help" o seleccioná una de las sugerencias rápidas para consultar datos.' }
 ];
 
 export default function InteractiveTerminal({ onDownloadCV }) {
@@ -36,7 +36,7 @@ export default function InteractiveTerminal({ onDownloadCV }) {
   - info     : Muestra datos personales y título profesional.
   - skills   : Lista el stack tecnológico principal.
   - projects : Muestra los 4 proyectos destacados (HomeFixing, RAG, ETL, SOC).
-  - cv       : Descarga directamente el curriculum en PDF.
+  - cv       : Descargá directamente el currículum en PDF.
   - contact  : Muestra la información de contacto directo.
   - clear    : Limpia la pantalla del terminal.`
         });
@@ -98,7 +98,7 @@ LinkedIn : ${personalDetails.linkedin}`
       default:
         newHistory.push({
           type: 'output',
-          text: `Comando no reconocido: "${cmdStr}". Escribe "help" para ver la lista de comandos disponibles.`
+          text: `Comando no reconocido: "${cmdStr}". Escribí "help" para ver la lista de comandos disponibles.`
         });
         break;
     }
@@ -185,7 +185,7 @@ LinkedIn : ${personalDetails.linkedin}`
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Escribe 'help' o un comando..."
+              placeholder="Escribí 'help' o un comando..."
               className="flex-1 bg-transparent border-none outline-none text-xs sm:text-base text-white font-mono placeholder:text-slate-500"
             />
             <button

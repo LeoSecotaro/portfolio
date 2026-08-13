@@ -30,7 +30,7 @@ export default function HeroSection() {
       <div className="glow-orb top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-600/15" />
       <div className="glow-orb top-1/2 right-1/4 w-[450px] h-[450px] bg-cyan-600/15" />
 
-      <div className="section-container relative z-10 space-y-20 sm:space-y-24">
+      <div className="section-container relative z-10">
         
         {/* Hero Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
@@ -84,7 +84,11 @@ export default function HeroSection() {
             }}
             className="hero-profile-column lg:col-span-6 w-full flex justify-center"
           >
-            <div className="hero-profile-card w-full max-w-xl apple-card glass-panel border border-white/20 relative group shadow-2xl overflow-hidden">
+            <a
+              href="#perfil"
+              aria-label="Ir al perfil profesional"
+              className="hero-profile-card block w-full max-w-xl apple-card glass-panel border border-white/20 relative group shadow-2xl overflow-hidden cursor-pointer transition-shadow duration-300 hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
+            >
               
               {/* Inner Safe Container */}
               <div className="hero-profile-content">
@@ -147,6 +151,13 @@ export default function HeroSection() {
                   </div>
                 </div>
 
+                <div className="hero-profile-action mt-8 flex justify-end">
+                  <span className="inline-flex h-8 w-40 items-center justify-center gap-3 rounded-full bg-blue-500/10 border border-blue-500/30 px-4 text-xs font-semibold leading-none text-blue-300 whitespace-nowrap transition-colors group-hover:bg-blue-500/20 group-hover:text-blue-200">
+                    {t('common.viewDetails')}
+                    <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
+
                 {/* Verified Status Footer */}
                 <div className="hero-profile-footer border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-300 gap-2">
                   <span className="flex items-center gap-2 text-emerald-400 font-semibold shrink-0">
@@ -158,15 +169,12 @@ export default function HeroSection() {
                 </div>
 
               </div>
-            </div>
+            </a>
           </motion.div>
         </div>
 
-        {/* Independent Clean Divider Line with Generous Top and Bottom Margins */}
-        <div className="hero-metrics-divider w-full border-t border-white/15" />
-
-        {/* Ticker / Metrics Cards Grid */}
-        <div className="w-full">
+        {/* Métricas removidas: el perfil ahora sigue directamente al hero. */}
+        {false && <div className="w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -193,7 +201,7 @@ export default function HeroSection() {
               <span className="text-xs sm:text-sm font-medium text-slate-300 leading-normal block max-w-[200px]">{t('hero.metricSoc')}</span>
             </div>
           </motion.div>
-        </div>
+        </div>}
 
       </div>
     </section>

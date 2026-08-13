@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { 
   User, CheckCircle, Globe, Lightbulb, 
   MapPin, Languages, Award, Sparkles 
@@ -10,6 +10,11 @@ import { useLanguage } from '../i18n/LanguageContext';
 export default function AboutSection() {
   const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState('resumen');
+  const shouldReduceMotion = useReducedMotion();
+  const revealFromBottom = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 32 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
     <section id="perfil" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
@@ -20,20 +25,28 @@ export default function AboutSection() {
       <div className="section-container relative z-10">
         
         {/* Section Header */}
-        <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
+        <motion.div
+          className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20"
+          variants={revealFromBottom}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.25 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.55, ease: 'easeOut' }}
+        >
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            {t('section.aboutEyebrow')}
+            {t('section.profileEyebrow')}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            {t('section.aboutTitle')}
-          </h2>
-          <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            {t('section.aboutDescription')}
-          </p>
-        </div>
+        </motion.div>
 
         {/* Tabs Bar - Guaranteed Massive Separation via selector-spacing */}
-        <div className="w-full flex justify-center selector-spacing">
+        <motion.div
+          className="w-full flex justify-center selector-spacing"
+          variants={revealFromBottom}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.35 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.5, delay: shouldReduceMotion ? 0 : 0.1, ease: 'easeOut' }}
+        >
           <div className="selector-bar inline-flex rounded-full glass-panel border border-white/25 flex-wrap justify-center shadow-2xl">
             {[
               { id: 'resumen', label: t('common.general') },
@@ -61,14 +74,16 @@ export default function AboutSection() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Tab Content Display */}
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          variants={revealFromBottom}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.45, delay: shouldReduceMotion ? 0 : 0.16, ease: 'easeOut' }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-8 sm:mt-12"
         >
           {activeTab === 'resumen' && (

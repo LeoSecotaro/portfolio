@@ -66,7 +66,6 @@ export default function ContactSection({ onDownloadCV }) {
           <div className="apple-card card-padding glass-panel border border-blue-500/40 bg-blue-600/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 mt-6">
             <div className="px-1">
               <h4 className="font-bold text-white text-lg mb-1">{t('common.cvTitle')}</h4>
-              <p className="text-sm text-slate-300">{t('common.cvDescription')}</p>
             </div>
             <button onClick={onDownloadCV} className="apple-btn-primary py-3 px-6 text-sm flex items-center gap-2 shrink-0 font-semibold">
               <Download className="w-5 h-5" />

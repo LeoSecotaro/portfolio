@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import MetricHighlights from './components/MetricHighlights';
 import AboutSection from './components/AboutSection';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
@@ -99,7 +98,6 @@ export default function App() {
       {/* Main Single Page Content with Generous Section Spacing */}
       <main className="flex flex-col gap-12 sm:gap-16 md:gap-20 pb-16">
         <HeroSection onDownloadCV={handleDownloadCV} />
-        <MetricHighlights />
         <AboutSection />
         <ExperienceSection />
         <ProjectsSection />
