@@ -149,6 +149,23 @@ body,
   box-shadow: 0 1.25rem 2.5rem rgba(37, 99, 235, 0.18);
 }
 
+.education-card-header {
+  margin-bottom: 1.35rem !important;
+}
+
+.education-card-title {
+  margin-bottom: 0.7rem !important;
+}
+
+.education-card-institution {
+  margin-bottom: 1rem !important;
+}
+
+.education-card-description {
+  margin-bottom: 1.35rem !important;
+  line-height: 1.75 !important;
+}
+
 .education-badge {
   display: inline-flex;
   align-items: center;
@@ -161,6 +178,63 @@ body,
   margin-top: 1.5rem;
   padding-top: 1.25rem;
   padding-bottom: 0.35rem;
+}
+
+.education-details-button {
+  box-sizing: border-box;
+  width: 7.75rem;
+  min-height: 2rem;
+  margin-top: 0.75rem;
+  gap: 0.5rem;
+  padding: 0 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.education-details-button svg {
+  flex-shrink: 0;
+}
+
+.education-details-modal {
+  box-sizing: border-box;
+  padding: 1.75rem !important;
+}
+
+.education-details-modal-header {
+  padding-bottom: 1.5rem;
+}
+
+.education-details-content {
+  margin-top: 2rem;
+}
+
+.education-details-close {
+  display: inline-flex;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-tool-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  box-sizing: border-box;
+  padding: 0.45rem 0.8rem;
+  line-height: 1.2;
+}
+
+.course-content-tick {
+  margin-top: 0.5rem !important;
+}
+
+@media (min-width: 640px) {
+  .education-details-modal {
+    padding: 2.5rem !important;
+  }
 }
 
 /* Prevent the skill-level badge from touching the progress meter. */

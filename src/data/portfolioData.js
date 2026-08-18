@@ -10,7 +10,7 @@ export const personalDetails = {
   phone: "+54 261 5712839",
   linkedin: "https://www.linkedin.com/in/leonardo-secotaro-ianardi/",
   github: "https://github.com/leonardosecotaro", // link standard
-  cvPath: "/Leonardo_Secotaro_CV.pdf",
+  cvPath: "/Leonardo_Secotaro_CV_ES.pdf",
   statusBadge: "Disponible para Desafíos Full Stack & Data",
   summary: `Soy Ingeniero en Sistemas de Información, con una formación integral orientada al análisis de sistemas, el diseño de soluciones, el desarrollo web Full Stack, la ingeniería de datos y la ciberseguridad. Me dedico a analizar requerimientos y construir soluciones integrales, desde aplicaciones dinámicas y escalables con Python, Ruby on Rails y React.js hasta pipelines ETL automatizados con Airflow y modelos de lenguaje acoplados a grafos con Neo4j. También cuento con experiencia en bases de datos SQL, monitoreo SOC e infraestructura tecnológica bajo metodologías ágiles.`,
   summaryEn: `I am an Information Systems Engineer with a well-rounded background in Full Stack web development, data engineering, solution architecture, and cybersecurity. I specialize in building dynamic, scalable applications with Python, Ruby on Rails, and React.js. I also have experience with automated ETL pipelines, language-model integration (RAG / LLMs), SQL and graph databases (Neo4j), SOC monitoring, and technology infrastructure under agile methodologies.`
@@ -320,7 +320,11 @@ export const education = [
     period: "Finalizado",
     status: "Certificado",
     description: "Formación en fundamentos de ciberseguridad, seguridad web, análisis de vulnerabilidades y seguridad defensiva/ofensiva.",
-    badge: "Certificación Cyber"
+    badge: "Certificación Cyber",
+    details: {
+      tools: ["Linux", "Nmap", "Wireshark", "Burp Suite", "OWASP Top 10"],
+      learning: ["Fundamentos de redes, sistemas operativos y criptografía", "Seguridad web y análisis de vulnerabilidades", "Reconocimiento y enumeración de servicios", "Principios de seguridad ofensiva y defensiva"]
+    }
   },
   {
     title: "SOC Nivel 1",
@@ -328,7 +332,11 @@ export const education = [
     period: "En Proceso",
     status: "Cursando",
     description: "Formación especializada para analistas de Centro de Operaciones de Seguridad (SOC), análisis de logs, respuesta ante incidentes e investigación de malware.",
-    badge: "Certificación SOC"
+    badge: "Certificación SOC",
+    details: {
+      tools: ["Wireshark", "Splunk", "Elastic (ELK)", "Sysmon", "VirusTotal"],
+      learning: ["Monitoreo y análisis de logs de seguridad", "Detección, clasificación y respuesta ante incidentes", "Análisis de tráfico y telemetría de endpoints", "Investigación inicial de alertas, amenazas y malware"]
+    }
   }
 ];
 

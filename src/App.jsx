@@ -74,8 +74,8 @@ export default function App() {
   // Download CV function
   const handleDownloadCV = () => {
     const cvFile = language === 'en'
-      ? 'Leonardo_Secotaro_CV_English.pdf'
-      : 'Leonardo_Secotaro_CV.pdf';
+      ? 'Leonardo_Secotaro_CV_EN.pdf'
+      : 'Leonardo_Secotaro_CV_ES.pdf';
     const link = document.createElement('a');
     link.href = `/${cvFile}`;
     link.download = cvFile;
