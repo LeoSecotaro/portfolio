@@ -21,7 +21,7 @@ export default function EducationSection() {
       <div className="section-container">
         
         {/* Section Header */}
-        <div className="section-heading flex flex-col max-w-3xl mx-auto mb-24 sm:mb-28">
+        <div className="section-heading education-heading flex flex-col max-w-3xl mx-auto">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
             {t('section.educationEyebrow')}
           </span>
@@ -34,7 +34,7 @@ export default function EducationSection() {
         </div>
 
         {/* Education Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12">
+        <div className="education-grid grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12">
           {education.map((item, index) => (
             <motion.div
               key={item.title}

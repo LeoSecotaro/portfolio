@@ -50,7 +50,7 @@ export default function Navbar({ onDownloadCV }) {
           href="#hero" 
           className="flex items-center gap-3.5 group cursor-pointer text-decoration-none shrink-0"
         >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 p-[1.5px] shadow-xl shadow-blue-500/25 group-hover:scale-105 transition-transform duration-300">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 p-[1.5px] group-hover:scale-105 transition-transform duration-300">
             <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
               <span className="font-extrabold text-base tracking-tighter text-white">LS</span>
             </div>

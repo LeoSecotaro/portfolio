@@ -143,6 +143,21 @@ body,
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
+.education-heading {
+  margin-bottom: 0 !important;
+}
+
+.education-grid {
+  margin-top: 3.5rem !important;
+  padding-top: 0;
+}
+
+@media (min-width: 640px) {
+  .education-grid {
+    margin-top: 4.5rem !important;
+  }
+}
+
 .education-card:hover {
   transform: translateY(-0.4rem);
   border-color: rgba(59, 130, 246, 0.7) !important;

@@ -275,6 +275,8 @@ export const skills = {
     { name: "Ruby on Rails", level: 80, tag: "Avanzado" },
     { name: "React.js", level: 75, tag: "Avanzado" },
     { name: "JavaScript (ES6+)", level: 70, tag: "Intermedio" },
+    { name: "Node.js", level: 65, tag: "Backend" },
+    { name: "Express.js", level: 65, tag: "APIs REST" },
     { name: "HTML5 / CSS3", level: 80, tag: "Avanzado" },
     { name: "APIs RESTful", level: 95, tag: "Avanzado" }
   ],
@@ -337,6 +339,14 @@ export const education = [
       tools: ["Wireshark", "Splunk", "Elastic (ELK)", "Sysmon", "VirusTotal"],
       learning: ["Monitoreo y análisis de logs de seguridad", "Detección, clasificación y respuesta ante incidentes", "Análisis de tráfico y telemetría de endpoints", "Investigación inicial de alertas, amenazas y malware"]
     }
+  },
+  {
+    title: "Node.js, Express & MySQL",
+    institution: "Formación online",
+    period: "Finalizado",
+    status: "Completado",
+    description: "Curso de desarrollo backend orientado a construir APIs REST con Node.js y Express, conectadas a bases de datos MySQL.",
+    badge: "Curso Backend"
   }
 ];
 
