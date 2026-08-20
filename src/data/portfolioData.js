@@ -12,8 +12,8 @@ export const personalDetails = {
   github: "https://github.com/leonardosecotaro", // link standard
   cvPath: "/Leonardo_Secotaro_CV_ES.pdf",
   statusBadge: "Disponible para Desafíos Full Stack & Data",
-  summary: `Soy Ingeniero en Sistemas de Información, con una formación integral orientada al análisis de sistemas, el diseño de soluciones, el desarrollo web Full Stack, la ingeniería de datos y la ciberseguridad. Me dedico a analizar requerimientos y construir soluciones integrales, desde aplicaciones dinámicas y escalables con Python, Ruby on Rails y React.js hasta pipelines ETL automatizados con Airflow y modelos de lenguaje acoplados a grafos con Neo4j. También cuento con experiencia en bases de datos SQL, monitoreo SOC e infraestructura tecnológica bajo metodologías ágiles.`,
-  summaryEn: `I am an Information Systems Engineer with a well-rounded background in Full Stack web development, data engineering, solution architecture, and cybersecurity. I specialize in building dynamic, scalable applications with Python, Ruby on Rails, and React.js. I also have experience with automated ETL pipelines, language-model integration (RAG / LLMs), SQL and graph databases (Neo4j), SOC monitoring, and technology infrastructure under agile methodologies.`
+  summary: `Combino análisis de requerimientos, diseño de arquitectura y desarrollo end-to-end para convertir necesidades de negocio en soluciones escalables. Tengo experiencia en aplicaciones web, automatización de pipelines ETL, bases de datos SQL y grafos, además de formación en ciberseguridad y operaciones SOC Nivel 1 bajo metodologías ágiles.`,
+  summaryEn: `I combine requirements analysis, architecture design, and end-to-end development to turn business needs into scalable solutions. My experience includes web applications, automated ETL pipelines, SQL and graph databases, as well as cybersecurity and SOC Level 1 operations training under agile methodologies.`
 };
 
 export const keyPillars = [

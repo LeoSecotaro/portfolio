@@ -50,7 +50,7 @@ export default function HeroSection() {
             <p className="text-lg sm:text-2xl font-semibold text-slate-200 max-w-2xl mb-8 leading-relaxed">
               {t('hero.title')}{' '}
               <span className="text-blue-400 font-bold">Full Stack</span>,{' '}
-              <span className="text-indigo-400 font-bold">{t('hero.data')}</span> {t('hero.security') === 'SOC Infrastructure' ? 'and' : 'e'}{' '}
+              <span className="text-indigo-400 font-bold">{t('hero.data')}</span> {t('hero.security') === 'SOC Infrastructure' ? 'and' : 'y'}{' '}
               <span className="text-cyan-400 font-bold">{t('hero.security')}</span>.
             </p>
 
