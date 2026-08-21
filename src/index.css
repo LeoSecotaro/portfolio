@@ -138,6 +138,18 @@ body,
   line-height: 1.2;
 }
 
+.footer-back-to-top {
+  min-height: 2rem;
+  margin-block: 1rem;
+  padding: 0.4rem 0.85rem;
+  gap: 0.45rem;
+  line-height: 1.2;
+}
+
+.portfolio-footer {
+  padding-block: 1.25rem;
+}
+
 /* Education cards: roomier labels and a card-level hover response. */
 .education-card {
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;

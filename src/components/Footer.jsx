@@ -9,7 +9,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full py-14 bg-black border-t border-white/15 relative text-xs sm:text-sm text-slate-400 font-mono flex flex-col items-center">
+    <footer
+      className="portfolio-footer w-full bg-black border-t border-white/15 relative text-xs sm:text-sm text-slate-400 font-mono flex flex-col items-center"
+      style={{ paddingBlock: '1rem' }}
+    >
       <div className="section-container flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Left: Signature */}
@@ -30,7 +33,8 @@ export default function Footer() {
         {/* Right: Back to Top Button */}
         <button
           onClick={scrollToTop}
-          className="px-4 py-2 rounded-full glass-pill hover:bg-white/15 text-slate-200 hover:text-white transition-colors flex items-center gap-2 cursor-pointer font-sans text-xs sm:text-sm font-semibold"
+          className="footer-back-to-top rounded-full glass-pill hover:bg-white/15 text-slate-200 hover:text-white transition-colors flex items-center cursor-pointer font-sans text-xs sm:text-sm font-semibold"
+          style={{ minHeight: '1.875rem', marginBlock: 0, padding: '0.3rem 0.75rem' }}
           aria-label={t('common.backToTop')}
         >
           <ArrowUp className="w-4 h-4" />
