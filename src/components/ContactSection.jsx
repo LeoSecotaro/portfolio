@@ -14,7 +14,7 @@ const LinkedinIcon = (props) => (
 export default function ContactSection({ onDownloadCV }) {
   const { t } = useLanguage();
   return (
-    <section id="contacto" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
+    <section id="contacto" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       <div className="glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15" />
 
       <div className="section-container relative z-10">

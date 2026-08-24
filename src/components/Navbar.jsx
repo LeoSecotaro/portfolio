@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Menu, X, ChevronRight, Languages } from 'lucide-react';
+import { Download, Menu, X, ChevronRight, Languages, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const navItems = [
@@ -14,7 +14,7 @@ const navItems = [
   { id: 'terminal', href: '#terminal' },
 ];
 
-export default function Navbar({ onDownloadCV }) {
+export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
   const { language, toggleLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -50,8 +50,8 @@ export default function Navbar({ onDownloadCV }) {
           href="#hero" 
           className="flex items-center gap-3.5 group cursor-pointer text-decoration-none shrink-0"
         >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-neutral-700 via-indigo-600 to-indigo-500 p-[1.5px] group-hover:scale-105 transition-transform duration-300">
-            <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+          <div className="brand-logo-shell w-12 h-12 rounded-full bg-gradient-to-tr from-neutral-700 via-indigo-600 to-indigo-500 p-[1.5px] group-hover:scale-105 transition-transform duration-300">
+            <div className="brand-logo-core w-full h-full bg-black rounded-full flex items-center justify-center">
               <span className="font-extrabold text-base tracking-tighter text-white">LS</span>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Navbar({ onDownloadCV }) {
                 {isActive && (
                   <motion.div
                     layoutId="activePill"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
+                    className="navbar-active-pill absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 border border-blue-300/60 rounded-full shadow-2xl shadow-blue-500/60"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -102,6 +102,17 @@ export default function Navbar({ onDownloadCV }) {
           >
             <Languages className="w-4 h-4 text-blue-400" />
             <span>{language.toUpperCase()}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            className="theme-toggle hidden sm:inline-flex items-center justify-center rounded-full glass-pill border border-white/20 text-slate-200 hover:text-white hover:border-blue-400/60 transition-colors"
+            aria-label={theme === 'dark' ? t('nav.themeLight') : t('nav.themeDark')}
+            aria-pressed={theme === 'light'}
+            title={theme === 'dark' ? t('nav.themeLight') : t('nav.themeDark')}
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
           {/* Download CV CTA - Enlarged */}
@@ -161,6 +172,15 @@ export default function Navbar({ onDownloadCV }) {
             >
               <Languages className="w-4 h-4 text-blue-400" />
               {language === 'es' ? 'English' : 'Español'}
+            </button>
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="mt-2 w-full rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-200 flex items-center justify-center gap-2"
+              aria-pressed={theme === 'light'}
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? t('nav.themeLight') : t('nav.themeDark')}
             </button>
           </motion.div>
         )}

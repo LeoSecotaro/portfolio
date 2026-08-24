@@ -15,6 +15,7 @@ import { useLanguage } from './i18n/LanguageContext';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [theme, setTheme] = useState('light');
   const { language } = useLanguage();
 
   useEffect(() => {
@@ -44,11 +45,44 @@ export default function App() {
     };
   }, [isLoading]);
 
-  // Force Dark Mode on html element permanently
   useEffect(() => {
-    document.documentElement.classList.add('dark');
-    document.documentElement.classList.remove('light');
-  }, []);
+    const root = document.documentElement;
+    const body = document.body;
+    const isLight = theme === 'light';
+
+    root.classList.toggle('dark', !isLight);
+    root.classList.toggle('light', isLight);
+    root.dataset.theme = theme;
+    body.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    root.style.setProperty('--bg-main', isLight ? '#ccc5b7' : '#0a0a0a');
+    root.style.setProperty('--bg-surface', isLight ? '#ffffff' : '#171717');
+    root.style.setProperty('--bg-surface-elevated', isLight ? '#ffffff' : '#171717');
+    root.style.setProperty('--text-main', isLight ? '#2d2a26' : '#fafafa');
+    root.style.setProperty('--text-muted', isLight ? '#5f5a52' : '#a3a3a3');
+    root.style.setProperty('--text-subtle', isLight ? '#736d63' : '#a3a3a3');
+    root.style.setProperty('--accent-blue', isLight ? '#6f5d44' : '#6366f1');
+    root.style.setProperty('--accent-blue-hover', isLight ? '#6f5d44' : '#818cf8');
+    root.style.setProperty('--glass-bg', isLight ? 'rgba(255, 255, 255, 0.86)' : 'rgba(23, 23, 23, 0.86)');
+    root.style.setProperty('--glass-border', isLight ? 'rgba(111, 93, 68, 0.24)' : 'rgba(250, 250, 250, 0.12)');
+    root.style.setProperty('--border-subtle', isLight ? 'rgba(111, 93, 68, 0.22)' : 'rgba(250, 250, 250, 0.1)');
+    root.style.setProperty('--border-strong', isLight ? 'rgba(111, 93, 68, 0.68)' : 'rgba(99, 102, 241, 0.55)');
+    root.style.setProperty('--card-hover-glow', isLight ? 'rgba(111, 93, 68, 0.2)' : 'rgba(99, 102, 241, 0.18)');
+    root.style.backgroundColor = isLight ? '#ccc5b7' : '#0a0a0a';
+    root.style.color = isLight ? '#2d2a26' : '#fafafa';
+    body.style.backgroundColor = isLight ? '#ccc5b7' : '#0a0a0a';
+    body.style.color = isLight ? '#2d2a26' : '#fafafa';
+
+    try {
+      localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      // The selected theme still works when browser storage is unavailable.
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
+  };
 
   // Always open the portfolio from its hero section rather than restoring a prior scroll position.
   useLayoutEffect(() => {
@@ -85,7 +119,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-slate-100 dark">
+    <div
+      className={`portfolio-app min-h-screen ${theme === 'dark' ? 'dark bg-black text-slate-100' : 'light light-theme-root'}`}
+      data-theme={theme}
+      style={{
+        backgroundColor: theme === 'light' ? '#ccc5b7' : '#0a0a0a',
+        color: theme === 'light' ? '#2d2a26' : '#fafafa'
+      }}
+    >
       <AnimatePresence>
         {isLoading && <PageSkeleton />}
       </AnimatePresence>
@@ -93,6 +134,8 @@ export default function App() {
       {/* Dynamic Header Navbar */}
       <Navbar
         onDownloadCV={handleDownloadCV}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main Single Page Content with Generous Section Spacing */}

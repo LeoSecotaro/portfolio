@@ -17,7 +17,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="perfil" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
+    <section id="perfil" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       
       {/* Background glow */}
       <div className="glow-orb top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10" />

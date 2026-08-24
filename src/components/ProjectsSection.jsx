@@ -35,7 +35,7 @@ export default function ProjectsSection() {
     : localizedProjects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="proyectos" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-hidden flex flex-col items-center">
+    <section id="proyectos" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       
       {/* Ambient background light */}
       <div className="glow-orb top-1/3 right-0 w-[550px] h-[550px] bg-indigo-600/15" />

@@ -54,7 +54,7 @@ export default function HeroSection() {
               <span className="text-cyan-400 font-bold">{t('hero.security')}</span>.
             </p>
 
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mb-12 leading-relaxed font-normal">
+            <p className="hero-description text-base sm:text-lg text-slate-300 max-w-2xl mb-12 leading-relaxed font-normal">
               {t('hero.description')}
             </p>
 
@@ -108,7 +108,7 @@ export default function HeroSection() {
 
                 {/* Profile Card Header */}
                 <div className="hero-profile-header flex items-center gap-4">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-neutral-800 via-indigo-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl shadow-xl shadow-indigo-500/30 shrink-0">
+                  <div className="theme-accent-avatar w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-neutral-800 via-indigo-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl shadow-xl shadow-indigo-500/30 shrink-0">
                     LS
                   </div>
                   <div className="min-w-0 flex-1">
