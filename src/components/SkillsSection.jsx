@@ -79,39 +79,26 @@ export default function SkillsSection() {
           transition={{ duration: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mt-8 sm:mt-12"
         >
-          {skills[activeTab]?.map((skill, index) => (
+          {skills[activeTab]?.map((skill) => {
+            const proficiency = skill.level >= 80 ? 'Avanzado' : skill.level >= 60 ? 'Intermedio' : 'Básico';
+
+            return (
             <div
               key={skill.name}
-              className="apple-card card-padding glass-panel border border-white/15 flex flex-col justify-between hover:border-blue-500/50"
+              className="skill-card self-start apple-card glass-panel border border-white/15 hover:border-blue-500/50"
             >
-              <div>
-                <div className="skill-card-header flex flex-col items-start gap-3 px-1">
-                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5 min-w-0 w-full">
-                    <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
-                    <span>{skill.name}</span>
-                  </h3>
-                  <span className="text-xs sm:text-sm font-sans card-badge-capsule bg-blue-500/15 text-blue-300 border border-blue-500/30 font-semibold shrink-0 tracking-wide">
-                    {skill.tag}
-                  </span>
-                </div>
-
-                {/* Level Meter Bar */}
-                <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden mb-3">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 rounded-full"
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center text-xs sm:text-sm font-mono text-slate-300 mt-2 px-1 pb-1">
-                <span>{t('common.level')}</span>
-                <span className="font-bold text-blue-400 text-sm sm:text-base">{skill.level}%</span>
+              <div className="skill-card-header flex flex-col items-start gap-3 px-1 mb-0">
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5 min-w-0 w-full">
+                  <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
+                  <span>{skill.name}</span>
+                </h3>
+                <span className="text-xs sm:text-sm font-sans card-badge-capsule bg-blue-500/15 text-blue-300 border border-blue-500/30 font-semibold shrink-0 tracking-wide">
+                  {proficiency}
+                </span>
               </div>
             </div>
-          ))}
+            );
+          })}
         </motion.div>
 
       </div>

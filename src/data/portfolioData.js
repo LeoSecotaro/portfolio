@@ -117,7 +117,7 @@ export const projects = [
     ],
     techStack: ["Ruby on Rails", "React.js", "MySQL", "JavaScript", "HTML5/CSS3", "REST API"],
     metrics: "Arquitectura Cliente-Servidor decoupled con 100% de vistas responsivas.",
-    gradient: "from-blue-600 to-indigo-600",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "Home",
     en: {
       subtitle: "Home Services Platform",
@@ -144,7 +144,7 @@ export const projects = [
     ],
     techStack: ["Python", "Neo4j", "Cypher", "Ollama", "Gemma3:4b", "LLM Local"],
     metrics: "Consultas cinematográficas en lenguaje natural con respuestas contextualizadas desde Neo4j.",
-    gradient: "from-purple-600 to-pink-600",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "BrainCircuit",
     en: {
       title: "Cinematic RAG System with Graphs",
@@ -171,7 +171,7 @@ export const projects = [
     ],
     techStack: ["Apache Airflow", "Python", "Pandas", "Scikit-Learn", "REST API", "ETL"],
     metrics: "Predictor de ganancias de películas con datos ETL y un R² (coeficiente de determinación) del 79%.",
-    gradient: "from-amber-500 to-rose-500",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "Workflow",
     en: {
       title: "Automated Data Pipeline (ETL)",
@@ -200,7 +200,7 @@ export const projects = [
     ],
     techStack: ["Wireshark", "Nmap", "Snort", "Ettercap", "Linux (Ubuntu)", "TryHackMe SOC"],
     metrics: "Hardening de red y monitoreo preventivo de paquetes e incidencias.",
-    gradient: "from-emerald-500 to-teal-700",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "ShieldAlert",
     en: {
       title: "Infrastructure & SOC Management",
@@ -228,7 +228,7 @@ export const projects = [
     ],
     techStack: ["React.js", "Ruby on Rails", "SQL", "REST APIs", "CI/CD", "Linux"],
     metrics: "Plataforma institucional con despliegues, mantenimiento y monitoreo continuo.",
-    gradient: "from-cyan-600 to-blue-700",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "BookOpen",
     en: {
       title: "University Extension Office",
@@ -256,7 +256,7 @@ export const projects = [
     ],
     techStack: ["React.js", "SQL / MySQL", "ETL", "Excel", "Calendario Interactivo", "REST APIs"],
     metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",
-    gradient: "from-rose-600 to-red-700",
+    gradient: "from-neutral-900 to-indigo-600",
     icon: "Heart",
     en: {
       title: "Servicios de Cardiología SA",
