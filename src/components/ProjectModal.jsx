@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, CheckCircle, ExternalLink, Database, 
-  Code2, Cpu, ShieldCheck, Zap, Server, Activity 
+  Code2, Cpu, ShieldCheck, Zap, Server, Activity, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ProjectModal({ project, onClose }) {
   const { language, t } = useLanguage();
+  const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [project?.id]);
+
   if (!project) return null;
+  const gallery = project.gallery || [];
+  const currentImage = gallery[activeImage];
+
+  const showPreviousImage = () => {
+    setActiveImage((current) => (current - 1 + gallery.length) % gallery.length);
+  };
+
+  const showNextImage = () => {
+    setActiveImage((current) => (current + 1) % gallery.length);
+  };
 
   return (
     <AnimatePresence>
@@ -20,7 +36,7 @@ export default function ProjectModal({ project, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-xl"
+          className="project-modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-xl"
         />
 
         {/* Modal Window (Apple Spatial UI / macOS QuickLook) */}
@@ -71,6 +87,70 @@ export default function ProjectModal({ project, onClose }) {
                 {project.description}
               </p>
             </div>
+
+            {gallery.length > 0 && (
+              <div className="project-modal-section">
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 font-semibold">
+                    {language === 'es' ? 'Galería del proyecto' : 'Project gallery'}
+                  </h3>
+                  <span className="text-xs font-mono text-slate-400">
+                    {activeImage + 1} / {gallery.length}
+                  </span>
+                </div>
+
+                <div className="project-gallery relative overflow-hidden rounded-2xl border border-white/15 bg-black/40">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.img
+                      key={currentImage.src}
+                      src={currentImage.src}
+                      alt={currentImage.alt}
+                      initial={{ opacity: 0, x: 24, scale: 0.985 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      exit={{ opacity: 0, x: -24, scale: 0.985 }}
+                      transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                      className="block h-auto max-h-[26rem] w-full object-contain"
+                    />
+                  </AnimatePresence>
+
+                  {gallery.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={showPreviousImage}
+                        className="project-gallery-control absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
+                        aria-label={language === 'es' ? 'Imagen anterior' : 'Previous image'}
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={showNextImage}
+                        className="project-gallery-control absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
+                        aria-label={language === 'es' ? 'Imagen siguiente' : 'Next image'}
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                <div className="project-gallery-dots flex items-center justify-center gap-2 mt-4">
+                  {gallery.map((image, index) => (
+                    <button
+                      key={image.src}
+                      type="button"
+                      onClick={() => setActiveImage(index)}
+                      className={`rounded-full transition-all ${index === activeImage ? 'w-6 bg-blue-400' : 'w-2 bg-white/30 hover:bg-white/60'}`}
+                      aria-label={`${language === 'es' ? 'Ver' : 'View'} ${image.alt}`}
+                    />
+                  ))}
+                </div>
+                <p className="mt-3 text-center text-xs sm:text-sm font-mono text-slate-400">
+                  {currentImage.alt}
+                </p>
+              </div>
+            )}
 
             {/* Impact Metric Banner */}
             <div className="project-modal-metric rounded-2xl bg-blue-600/15 border border-blue-500/40 flex items-center gap-4">

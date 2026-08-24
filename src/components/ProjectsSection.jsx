@@ -24,12 +24,26 @@ const categories = [
   { key: 'Ciberseguridad', labelKey: 'security' }
 ];
 
+const featuredProjectOrder = [
+  'servicios-cardiologia-sa-proyecto',
+  'seu-utn-platform'
+];
+
 export default function ProjectsSection() {
   const { language, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const localizedProjects = projects.map((project) => localize(project, language));
+  const localizedProjects = projects
+    .map((project) => localize(project, language))
+    .sort((firstProject, secondProject) => {
+      const firstPosition = featuredProjectOrder.indexOf(firstProject.id);
+      const secondPosition = featuredProjectOrder.indexOf(secondProject.id);
+      const firstPriority = firstPosition === -1 ? Number.MAX_SAFE_INTEGER : firstPosition;
+      const secondPriority = secondPosition === -1 ? Number.MAX_SAFE_INTEGER : secondPosition;
+
+      return firstPriority - secondPriority;
+    });
   const filteredProjects = activeCategory === 'Todos'
     ? localizedProjects
     : localizedProjects.filter(p => p.category === activeCategory);

@@ -1772,6 +1772,38 @@ html[data-theme="light"] #root {
   box-shadow: none !important;
 }
 
+.project-gallery-control {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.project-gallery-control:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.project-gallery-dots button {
+  height: 0.5rem;
+}
+
+[data-theme="light"] .project-gallery-control {
+  background-color: #6f5d44 !important;
+  border-color: #6f5d44 !important;
+}
+
+[data-theme="light"] .project-gallery-dots .bg-blue-400 {
+  background-color: #6f5d44 !important;
+}
+
+[data-theme="light"] .project-modal-backdrop {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(12px) saturate(90%);
+  -webkit-backdrop-filter: blur(12px) saturate(90%);
+}
+
 html.dark .hero-description,
 .portfolio-app.dark .hero-description {
   color: #fafafa !important;

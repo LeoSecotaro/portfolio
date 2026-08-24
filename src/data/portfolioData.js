@@ -255,6 +255,13 @@ export const projects = [
       "Comparación de información financiera cargada para facilitar el análisis operativo."
     ],
     techStack: ["React.js", "SQL / MySQL", "ETL", "Excel", "Calendario Interactivo", "REST APIs"],
+    gallery: [
+      { src: "/images/scsa/manejo-horarios-faltas.jpeg", alt: "Manejo de horarios y faltas" },
+      { src: "/images/scsa/dashboard-financiero.jpeg", alt: "Dashboard financiero" },
+      { src: "/images/scsa/flujo-ingresos-egresos.jpeg", alt: "Flujo de ingresos y egresos" },
+      { src: "/images/scsa/conciliacion-ingresos.jpeg", alt: "Conciliación de ingresos" },
+      { src: "/images/scsa/detalle-conciliacion.jpeg", alt: "Detalle de conciliación" }
+    ],
     metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",
     gradient: "from-neutral-900 to-indigo-600",
     icon: "Heart",
