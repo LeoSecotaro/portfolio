@@ -14,6 +14,13 @@ export default function ProjectModal({ project, onClose }) {
     setActiveImage(0);
   }, [project?.id]);
 
+  useEffect(() => {
+    project?.gallery?.forEach((image) => {
+      const preloadImage = new Image();
+      preloadImage.src = image.src;
+    });
+  }, [project?.id]);
+
   if (!project) return null;
   const gallery = project.gallery || [];
   const currentImage = gallery[activeImage];
@@ -99,17 +106,17 @@ export default function ProjectModal({ project, onClose }) {
                   </span>
                 </div>
 
-                <div className="project-gallery relative overflow-hidden rounded-2xl border border-white/15 bg-black/40">
-                  <AnimatePresence mode="wait" initial={false}>
+                <div className="project-gallery relative aspect-video min-h-[14rem] overflow-hidden rounded-2xl border border-white/15 bg-black/40">
+                  <AnimatePresence initial={false}>
                     <motion.img
                       key={currentImage.src}
                       src={currentImage.src}
                       alt={currentImage.alt}
-                      initial={{ opacity: 0, x: 24, scale: 0.985 }}
-                      animate={{ opacity: 1, x: 0, scale: 1 }}
-                      exit={{ opacity: 0, x: -24, scale: 0.985 }}
-                      transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                      className="block h-auto max-h-[26rem] w-full object-contain"
+                      initial={{ opacity: 0, scale: 1.015 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.995 }}
+                      transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
+                      className="absolute inset-0 h-full w-full object-contain"
                     />
                   </AnimatePresence>
 
@@ -118,7 +125,7 @@ export default function ProjectModal({ project, onClose }) {
                       <button
                         type="button"
                         onClick={showPreviousImage}
-                        className="project-gallery-control absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
+                        className="project-gallery-control absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
                         aria-label={language === 'es' ? 'Imagen anterior' : 'Previous image'}
                       >
                         <ChevronLeft className="w-5 h-5" />
@@ -126,7 +133,7 @@ export default function ProjectModal({ project, onClose }) {
                       <button
                         type="button"
                         onClick={showNextImage}
-                        className="project-gallery-control absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
+                        className="project-gallery-control absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
                         aria-label={language === 'es' ? 'Imagen siguiente' : 'Next image'}
                       >
                         <ChevronRight className="w-5 h-5" />
@@ -179,7 +186,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
 
             {/* Tech Stack Pills */}
-            <div className="project-modal-section">
+            <div className="project-modal-section project-modal-technologies-section">
               <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-cyan-400 font-semibold mb-4">
                 {t('common.technologies')}
               </h3>
@@ -195,6 +202,22 @@ export default function ProjectModal({ project, onClose }) {
               </div>
             </div>
 
+          </div>
+
+          <div className="project-modal-tools-footer">
+            <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-cyan-400 font-semibold mb-3">
+              {t('common.technologies')}
+            </h3>
+            <div className="flex flex-wrap gap-2.5">
+              {project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="project-modal-tech-pill rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm font-mono text-slate-200 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Footer Actions */}

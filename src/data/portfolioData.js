@@ -215,28 +215,30 @@ export const projects = [
   {
     id: "seu-utn-platform",
     title: "Secretaría de Extensión Universitaria",
-    subtitle: "Plataforma Institucional UTN",
+    subtitle: "Rediseño, Accesibilidad & Asistente Gemini",
     category: "Full Stack",
-    badge: "Full Stack & CI/CD",
-    summary: "Plataforma institucional desarrollada para centralizar la información académica y los servicios de la Secretaría de Extensión Universitaria.",
-    description: "Desarrollo Full Stack de la página oficial de la Secretaría de Extensión Universitaria de UTN, desde el relevamiento de requerimientos y el diseño funcional hasta el mantenimiento, los despliegues y la mejora continua de la experiencia de usuario.",
+    badge: "Modernización Institucional",
+    summary: "Proyecto de modernización implementado para la Oficina de Extensión Universitaria UTN FRM, que mejoró la navegación, el acceso a cursos y actividades, y la experiencia de las personas usuarias.",
+    description: "Se optimizó el sistema de la Oficina de Extensión Universitaria de la Universidad Tecnológica Nacional Facultad Regional Mendoza mediante el rediseño de su interfaz y la incorporación de nuevas funcionalidades. Se desarrolló una aplicación web moderna con React, navegación clara, contenidos mejor organizados e integración eficiente con las fuentes de datos existentes. Además, se implementó un chatbot basado en Gemini para consultas en tiempo real sobre cursos, inscripciones, fechas y requisitos, junto con notificaciones y mejoras sobre las opciones de accesibilidad ya disponibles.",
     keyFeatures: [
-      "Desarrollo y mantenimiento de interfaces institucionales escalables centradas en el usuario.",
-      "Análisis de requerimientos y estructuración de información académica.",
-      "Implementación de pipelines CI/CD para despliegues confiables.",
-      "Gestión de infraestructura web, disponibilidad y reportes de rendimiento."
+      "Se rediseñó la interfaz institucional con navegación clara y una presentación más intuitiva de cursos y actividades.",
+      "Se organizaron los contenidos y se integraron las fuentes de datos existentes para una visualización actualizada.",
+      "Se implementó un asistente conversacional basado en Gemini para consultas sobre cursos, inscripciones, fechas y requisitos.",
+      "Se incorporaron notificaciones y alertas para comunicar novedades relevantes a las personas usuarias.",
+      "Se preservaron, mejoraron y ampliaron las opciones de accesibilidad del sistema."
     ],
-    techStack: ["React.js", "Ruby on Rails", "SQL", "REST APIs", "CI/CD", "Linux"],
-    metrics: "Plataforma institucional con despliegues, mantenimiento y monitoreo continuo.",
+    techStack: ["React", "Ruby", "MySQL", "Gemini API"],
+    metrics: "Mejora implementada en experiencia de usuario, acceso a la información y automatización de consultas.",
     gradient: "from-neutral-900 to-indigo-600",
     icon: "BookOpen",
     en: {
       title: "University Extension Office",
-      subtitle: "UTN Institutional Platform",
-      summary: "An institutional platform built to centralize academic information and services for the University Extension Office.",
-      description: "Full Stack development for the UTN University Extension Office website, from requirements gathering and functional design to maintenance, deployments, and continuous user-experience improvement.",
-      keyFeatures: ["Development and maintenance of scalable, user-centered institutional interfaces.", "Requirements analysis and academic-information structuring.", "CI/CD pipelines for reliable deployments.", "Web infrastructure, availability, and performance-report management."],
-      metrics: "Institutional platform with continuous deployment, maintenance, and monitoring."
+      subtitle: "Redesign, Accessibility & Gemini Assistant",
+      badge: "Institutional Modernization",
+      summary: "A modernization project implemented for the UTN FRM University Extension Office, improving navigation, access to courses and activities, and the user experience.",
+      description: "The University Extension Office system at Universidad Tecnológica Nacional Facultad Regional Mendoza was improved through an interface redesign and new features. A modern React web application was developed with clearer navigation, better-organized content, and efficient integration with existing data sources. A Gemini-based chatbot was also implemented for real-time questions about courses, enrollment, dates, and requirements, along with notifications and improvements to the existing accessibility features.",
+      keyFeatures: ["The institutional interface was redesigned with clear navigation and a more intuitive presentation of courses and activities.", "Content was organized and existing data sources were integrated for an up-to-date view.", "A Gemini-based conversational assistant was implemented for questions about courses, enrollment, dates, and requirements.", "Notifications and alerts were incorporated for relevant updates.", "The system's accessibility features were preserved, improved, and expanded."],
+      metrics: "Implemented improvements to user experience, information access, and automated inquiries."
     }
   },
   {
@@ -254,7 +256,7 @@ export const projects = [
       "Carga de archivos Excel y normalización de datos mediante un proceso ETL.",
       "Comparación de información financiera cargada para facilitar el análisis operativo."
     ],
-    techStack: ["React.js", "SQL / MySQL", "ETL", "Excel", "Calendario Interactivo", "REST APIs"],
+    techStack: ["React.js", "Ruby on Rails", "SQL / MySQL", "ETL", "Excel", "Sidekiq", "Redis"],
     gallery: [
       { src: "/images/scsa/manejo-horarios-faltas.jpeg", alt: "Manejo de horarios y faltas" },
       { src: "/images/scsa/dashboard-financiero.jpeg", alt: "Dashboard financiero" },

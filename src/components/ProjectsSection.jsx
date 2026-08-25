@@ -157,7 +157,7 @@ export default function ProjectsSection() {
                     </p>
 
                     {/* Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-2.5 mb-8">
+                    <div className="project-tech-stack flex flex-wrap gap-2.5 mb-8">
                       {project.techStack.map((tech) => (
                         <span 
                           key={tech}
@@ -170,7 +170,7 @@ export default function ProjectsSection() {
                   </div>
 
                   {/* Card Action */}
-                  <div className="pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+                  <div className="project-card-action pt-5 border-t border-white/10 flex items-center justify-between gap-3">
                     <span className="text-xs sm:text-sm font-mono text-slate-400 font-medium truncate flex-1">
                       {project.metrics}
                     </span>
