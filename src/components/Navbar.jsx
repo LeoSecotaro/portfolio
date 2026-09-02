@@ -55,7 +55,7 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
               <span className="font-extrabold text-base tracking-tighter text-white">LS</span>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="navbar-brand-copy flex flex-col">
             <span className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-blue-400 transition-colors whitespace-nowrap">
               Leonardo Secotaro
             </span>
@@ -127,7 +127,7 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-3 rounded-full glass-pill text-slate-300 hover:text-white"
+            className="mobile-menu-toggle lg:hidden inline-flex items-center justify-center rounded-full transition-colors"
             aria-label={t('nav.menu')}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -143,14 +143,14 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden mt-3 p-5 rounded-2xl glass-panel border border-white/15 shadow-2xl flex flex-col gap-2 bg-black/90 backdrop-blur-2xl"
+            className="mobile-menu-drawer lg:hidden flex flex-col"
           >
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/10 text-base font-medium text-slate-100 transition-colors"
+                className="mobile-menu-link flex items-center justify-between transition-colors"
               >
                 <span>{t(`nav.${item.id}`)}</span>
                 <ChevronRight className="w-5 h-5 text-slate-400" />
@@ -161,14 +161,14 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
                 setMobileMenuOpen(false);
                 onDownloadCV();
               }}
-              className="mt-3 w-full apple-btn-primary py-3.5 text-base font-semibold flex items-center justify-center gap-2"
+              className="mobile-menu-download w-full apple-btn-primary text-base font-semibold flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
               <span>{t('nav.download')}</span>
             </button>
             <button
               onClick={toggleLanguage}
-              className="mt-2 w-full rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-200 flex items-center justify-center gap-2"
+              className="mobile-menu-action w-full rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
             >
               <Languages className="w-4 h-4 text-blue-400" />
               {language === 'es' ? 'English' : 'Español'}
@@ -176,7 +176,7 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
             <button
               type="button"
               onClick={onToggleTheme}
-              className="mt-2 w-full rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-200 flex items-center justify-center gap-2"
+              className="mobile-menu-action w-full rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
               aria-pressed={theme === 'light'}
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

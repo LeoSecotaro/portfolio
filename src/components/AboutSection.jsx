@@ -40,14 +40,14 @@ export default function AboutSection() {
 
         {/* Tabs Bar - Guaranteed Massive Separation via selector-spacing */}
         <motion.div
-          className="w-full flex justify-center selector-spacing"
+          className="w-full flex justify-center selector-spacing about-selector-spacing"
           variants={revealFromBottom}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.35 }}
           transition={{ duration: shouldReduceMotion ? 0.01 : 0.5, delay: shouldReduceMotion ? 0 : 0.1, ease: 'easeOut' }}
         >
-          <div className="selector-bar inline-flex rounded-full glass-panel border border-white/25 flex-wrap justify-center shadow-2xl">
+          <div className="selector-bar about-selector-bar inline-flex rounded-full glass-panel border border-white/25 flex-wrap justify-center shadow-2xl">
             {[
               { id: 'resumen', label: t('common.general') },
               { id: 'filosofia', label: t('common.philosophy') },
