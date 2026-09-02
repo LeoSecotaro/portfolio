@@ -35,7 +35,7 @@ export default function ProjectModal({ project, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-start justify-center p-2 sm:items-center sm:p-6 lg:p-8 overflow-y-auto">
         
         {/* Backdrop filter blur overlay */}
         <motion.div
@@ -52,7 +52,7 @@ export default function ProjectModal({ project, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.1 }}
-          className="project-modal relative w-full max-w-4xl glass-panel border border-white/20 rounded-3xl shadow-2xl overflow-hidden z-10 my-auto bg-slate-950 text-white"
+          className="project-modal relative w-full max-w-4xl max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-3rem)] glass-panel border border-white/20 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden z-10 my-0 sm:my-auto bg-slate-950 text-white flex flex-col"
         >
           {/* Header Banner with Gradient Accent */}
           <div className={`project-modal-header h-36 sm:h-44 bg-gradient-to-r ${project.gradient} flex flex-col justify-between relative overflow-hidden`}>

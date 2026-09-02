@@ -1946,6 +1946,98 @@ html.dark .hero-description,
   box-shadow: none !important;
 }
 
+/* The project modal must fit inside a phone viewport instead of being vertically
+   centred beyond it. Header and tools remain accessible while the content scrolls. */
+@media (max-width: 639px) {
+  .project-modal-header {
+    height: auto !important;
+    min-height: 6.75rem;
+    padding: 0.85rem 1rem !important;
+    flex: 0 0 auto;
+  }
+
+  .project-modal-header h2 {
+    font-size: 1.45rem !important;
+    line-height: 1.1;
+  }
+
+  .project-modal-header p {
+    margin-top: 0.25rem;
+    line-height: 1.3;
+  }
+
+  .project-modal-header > .relative:first-of-type {
+    align-items: flex-start;
+  }
+
+  .project-modal-header button {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 auto;
+  }
+
+  .project-modal-badge {
+    max-width: calc(100% - 3rem);
+    padding: 0.35rem 0.6rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none !important;
+    padding: 1rem !important;
+    gap: 1.25rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .project-modal-section h3 {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .project-modal-section p {
+    font-size: 0.95rem !important;
+    line-height: 1.55;
+  }
+
+  .project-gallery {
+    min-height: 0 !important;
+    border-radius: 0.85rem;
+  }
+
+  .project-gallery-control {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .project-gallery-control svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .project-gallery-dots {
+    margin-top: 0.65rem !important;
+  }
+
+  .project-modal-tools-footer {
+    flex: 0 0 auto;
+    padding: 0.8rem 1rem 0.9rem;
+  }
+
+  .project-modal-tools-footer h3 {
+    margin-bottom: 0.65rem !important;
+    font-size: 0.68rem !important;
+  }
+
+  .project-modal-tools-footer .project-modal-tech-pill {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
 /* On narrow screens the project categories form a stable two-column grid.
    This keeps the active pill and its border fully inside the selector. */
 @media (max-width: 639px) {
