@@ -258,12 +258,15 @@ export const projects = [
     ],
     techStack: ["React.js", "Ruby on Rails", "SQL / MySQL", "ETL", "Excel", "Sidekiq", "Redis"],
     gallery: [
-      { src: "/images/scsa/manejo-horarios-faltas.jpeg", alt: "Manejo de horarios y faltas" },
-      { src: "/images/scsa/dashboard-financiero.jpeg", alt: "Dashboard financiero" },
-      { src: "/images/scsa/flujo-ingresos-egresos.jpeg", alt: "Flujo de ingresos y egresos" },
-      { src: "/images/scsa/conciliacion-ingresos.jpeg", alt: "Conciliación de ingresos" },
-      { src: "/images/scsa/detalle-conciliacion.jpeg", alt: "Detalle de conciliación" }
+      { src: "/images/scsa/horarios.jpeg", alt: "Calendario de horarios médicos" },
+      { src: "/images/scsa/dashboard.png", alt: "Dashboard operativo" },
+      { src: "/images/scsa/ingresos-egresos.png", alt: "Ingresos y egresos" },
+      { src: "/images/scsa/conciliacion.png", alt: "Conciliación financiera" },
+      { src: "/images/scsa/detalle-conciliacion.png", alt: "Detalle de conciliación" },
+      { src: "/images/scsa/comparacion-obras-sociales.png", alt: "Comparación de obras sociales" },
+      { src: "/images/scsa/login.jpeg", alt: "Acceso al sistema" }
     ],
+    galleryNotice: "Algunas capturas tienen información censurada para proteger datos sensibles y no públicos.",
     metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",
     gradient: "from-neutral-900 to-indigo-600",
     icon: "Heart",
@@ -273,7 +276,8 @@ export const projects = [
       summary: "An integrated system for medical schedules and financial information processing through Excel upload and normalization.",
       description: "A solution for Servicios de Cardiología SA that centralizes physician schedules, absences, and replacements through a custom interactive calendar. It also includes a financial ETL module that receives Excel files, normalizes the data, and compares it against previously uploaded records.",
       keyFeatures: ["A custom interactive calendar for planning physician schedules.", "Requirements gathering and logical solution design.", "Tracking absences, availability, and replacements.", "Excel-file upload and normalization through an ETL process.", "Comparison of uploaded financial information for operational analysis."],
-      metrics: "Centralized physician schedules and normalized financial data ready for comparison."
+      metrics: "Centralized physician schedules and normalized financial data ready for comparison.",
+      galleryNotice: "Some screenshots contain redacted information to protect sensitive, non-public data."
     }
   }
 ];

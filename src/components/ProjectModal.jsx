@@ -156,6 +156,11 @@ export default function ProjectModal({ project, onClose }) {
                 <p className="mt-3 text-center text-xs sm:text-sm font-mono text-slate-400">
                   {currentImage.alt}
                 </p>
+                {(language === 'en' ? project.en?.galleryNotice : project.galleryNotice) && (
+                  <p className="project-gallery-notice">
+                    {language === 'en' ? project.en?.galleryNotice : project.galleryNotice}
+                  </p>
+                )}
               </div>
             )}
 

@@ -31,11 +31,21 @@ export default function HeroSection() {
         </div>
         <div className="hero-class-diagram" aria-label={en ? 'Class diagram' : 'Diagrama de clases'}>
           <svg className="uml-connections" viewBox="0 0 1200 680" preserveAspectRatio="none" aria-hidden="true">
-            <defs><marker id="uml-relation-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" /></marker></defs>
-            <path d="M170 174H390V44H515" markerEnd="url(#uml-relation-arrow)" /><path d="M685 44H810V174H1030" markerEnd="url(#uml-relation-arrow)" />
-            <path d="M85 218V489" markerEnd="url(#uml-relation-arrow)" /><path d="M1115 218V489" markerEnd="url(#uml-relation-arrow)" />
-            <path d="M170 533H390V635H515" markerEnd="url(#uml-relation-arrow)" /><path d="M685 635H810V533H1030" markerEnd="url(#uml-relation-arrow)" />
-            <g className="uml-cardinality"><text x="181" y="166">1</text><text x="496" y="36">*</text><text x="696" y="36">1</text><text x="1014" y="166">*</text><text x="94" y="232">1</text><text x="94" y="476">*</text><text x="1124" y="232">1</text><text x="1124" y="476">*</text><text x="181" y="525">1</text><text x="496" y="627">*</text><text x="696" y="627">1</text><text x="1014" y="525">*</text></g>
+            <defs><marker id="uml-relation-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path className="uml-arrow-head" d="M0 0L7 3.5L0 7Z" /></marker></defs>
+            <path className="uml-link uml-link-one" pathLength="1" d="M170 174H390V44H515" markerEnd="url(#uml-relation-arrow)" />
+            <path className="uml-link uml-link-two" pathLength="1" d="M685 44H810V174H1030" markerEnd="url(#uml-relation-arrow)" />
+            <path className="uml-link uml-link-three" pathLength="1" d="M85 218V489" markerEnd="url(#uml-relation-arrow)" />
+            <path className="uml-link uml-link-four" pathLength="1" d="M1115 218V489" markerEnd="url(#uml-relation-arrow)" />
+            <path className="uml-link uml-link-five" pathLength="1" d="M170 533H390V635H515" markerEnd="url(#uml-relation-arrow)" />
+            <path className="uml-link uml-link-six" pathLength="1" d="M685 635H810V533H1030" markerEnd="url(#uml-relation-arrow)" />
+            <g className="uml-cardinality">
+              <text x="181" y="166">1</text><text className="uml-target-cardinality" x="496" y="36">*</text>
+              <text x="696" y="36">1</text><text className="uml-target-cardinality" x="1014" y="166">*</text>
+              <text x="94" y="232">1</text><text className="uml-target-cardinality" x="94" y="476">*</text>
+              <text x="1124" y="232">1</text><text className="uml-target-cardinality" x="1124" y="476">*</text>
+              <text x="181" y="525">1</text><text className="uml-target-cardinality" x="496" y="627">*</text>
+              <text x="696" y="627">1</text><text className="uml-target-cardinality" x="1014" y="525">*</text>
+            </g>
           </svg>
           <div className="uml-node uml-client"><strong>PortfolioView</strong><span>+ language: Locale</span><span>+ navigateTo()</span></div>
           <div className="uml-node uml-project"><strong>Project</strong><span>+ techStack: Tool[]</span><span>+ openDetails()</span></div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Menu, X, ChevronRight, Languages, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -19,26 +19,61 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pendingSectionRef = useRef(null);
+  const pendingSectionTimerRef = useRef(null);
+
+  const selectSection = (sectionId) => {
+    pendingSectionRef.current = sectionId;
+    window.clearTimeout(pendingSectionTimerRef.current);
+    pendingSectionTimerRef.current = window.setTimeout(() => {
+      pendingSectionRef.current = null;
+    }, 1600);
+    setActiveSection(sectionId);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // ScrollSpy logic
+      // Use viewport positions instead of offsetTop so the active item stays
+      // accurate after sections with animated or responsive layouts.
       const sections = navItems.map(item => item.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+      // Sections reserve space for the fixed navigation via scroll-margin.
+      // Match that visual landing area so a clicked section becomes active
+      // as soon as its heading is visible below the header.
+      const activationLine = Math.min(360, window.innerHeight * 0.42);
+      const pendingSection = pendingSectionRef.current;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+      // Keep the clicked item selected while smooth scrolling crosses
+      // intermediate sections. Release it as soon as its destination arrives.
+      if (pendingSection) {
+        const pendingTop = document.getElementById(pendingSection)?.getBoundingClientRect().top;
+        if (pendingTop > activationLine) return;
+        pendingSectionRef.current = null;
+        window.clearTimeout(pendingSectionTimerRef.current);
+      }
+
+      let currentSection = 'hero';
+      let closestSectionTop = Number.NEGATIVE_INFINITY;
+
+      for (const sectionId of sections) {
+        const sectionEl = document.getElementById(sectionId);
+        const sectionTop = sectionEl?.getBoundingClientRect().top;
+        if (sectionTop <= activationLine && sectionTop > closestSectionTop) {
+          currentSection = sectionId;
+          closestSectionTop = sectionTop;
         }
       }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.clearTimeout(pendingSectionTimerRef.current);
+    };
   }, []);
 
   return (
@@ -73,6 +108,7 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
               <a
                 key={item.id}
                 href={item.href}
+                onClick={() => selectSection(item.href.substring(1))}
                 className={`nav-selector-pill relative text-sm font-extrabold rounded-full transition-all duration-300 whitespace-nowrap shrink-0 flex items-center justify-center ${
                   isActive 
                     ? 'text-white' 
@@ -149,7 +185,10 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
               <a
                 key={item.id}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  selectSection(item.href.substring(1));
+                  setMobileMenuOpen(false);
+                }}
                 className="mobile-menu-link flex items-center justify-between transition-colors"
               >
                 <span>{t(`nav.${item.id}`)}</span>
