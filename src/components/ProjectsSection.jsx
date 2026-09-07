@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Home, BrainCircuit, Workflow, ShieldAlert, BookOpen, Heart,
-  ExternalLink, Layers, ArrowUpRight, Sparkles 
+  Layers, ArrowUpRight
 } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 import ProjectModal from './ProjectModal';
+import FeaturedProject from './FeaturedProject';
 import { localize, useLanguage } from '../i18n/LanguageContext';
 
 const iconMap = {
@@ -47,6 +48,8 @@ export default function ProjectsSection() {
   const filteredProjects = activeCategory === 'Todos'
     ? localizedProjects
     : localizedProjects.filter(p => p.category === activeCategory);
+  const featuredProject = localizedProjects.find(project => project.id === featuredProjectOrder[0]);
+  const showFeatured = featuredProject && (activeCategory === 'Todos' || activeCategory === featuredProject.category);
 
   return (
     <section id="proyectos" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
@@ -59,13 +62,13 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            {t('section.projectsEyebrow')}
+            {language === 'en' ? 'Selected work / Software & data' : 'Trabajo seleccionado / Software & datos'}
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
-            {t('section.projectsTitle')}
+            {language === 'en' ? 'Problems turned into projects.' : 'Problemas convertidos en proyectos.'}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed font-normal text-center max-w-2xl mx-auto">
-            {t('section.projectsDescription')}
+            {language === 'en' ? 'Explore what I built, how it works, and the engineering behind each solution.' : 'Explorá qué construí, cómo funciona y la ingeniería detrás de cada solución.'}
           </p>
         </div>
 
@@ -96,9 +99,11 @@ export default function ProjectsSection() {
           </div>
         </div>
 
+        {showFeatured && <FeaturedProject project={featuredProject} onOpen={() => setSelectedProject(featuredProject)} />}
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 mt-8 sm:mt-12">
-          {filteredProjects.map((project, index) => {
+          {filteredProjects.filter(project => !showFeatured || project.id !== featuredProject.id).map((project, index) => {
             const IconComp = iconMap[project.icon] || Layers;
             return (
               <motion.div

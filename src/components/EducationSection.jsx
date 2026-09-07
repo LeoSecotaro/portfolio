@@ -19,6 +19,7 @@ export default function EducationSection() {
   return (
     <section id="educacion" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       <div className="section-container">
+        <div className="education-divider" aria-hidden="true" />
         
         {/* Section Header */}
         <div className="section-heading education-heading flex flex-col max-w-3xl mx-auto">

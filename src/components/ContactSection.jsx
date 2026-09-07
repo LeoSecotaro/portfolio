@@ -17,7 +17,9 @@ export default function ContactSection({ onDownloadCV }) {
     <section id="contacto" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       <div className="glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15" />
 
-      <div className="section-container relative z-10">
+      <div className="section-container contact-container relative z-10">
+        <div className="contact-divider" aria-hidden="true" />
+        <div className="contact-column">
         <div className="section-heading flex flex-col max-w-3xl mx-auto mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
             {t('section.contactEyebrow')}
@@ -30,7 +32,7 @@ export default function ContactSection({ onDownloadCV }) {
           </p>
         </div>
 
-        <div className="contact-details max-w-3xl w-full">
+        <div className="contact-details">
           <div className="space-y-5 sm:space-y-6">
             <a href={personalDetails.linkedin} target="_blank" rel="noopener noreferrer" className="apple-card card-padding glass-panel border border-white/15 flex items-center gap-5 hover:border-blue-500/50 group w-full">
               <div className="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform shrink-0">
@@ -72,6 +74,7 @@ export default function ContactSection({ onDownloadCV }) {
               <span>{t('common.downloadPdf')}</span>
             </button>
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -82,7 +82,7 @@ export const experience = [
     period: "Enero 2026 — Marzo 2026 - Actualidad",
     location: "Mendoza, Argentina",
     badge: "Salud & Financiero",
-    description: "Construcción de sistemas en tiempo real para turnos médicos y procesamiento de métricas financieras.",
+    description: "Sistema integral para organizar horarios médicos y procesar información financiera mediante carga y normalización de archivos Excel.",
     bulletPoints: [
       "Desarrollo end-to-end, relevamiento de requerimientos y diseño lógico de un sistema integral de gestión de turnos médicos interactivo y en tiempo real.",
       "Extracción, transformación y estructuración de datos (ETL) para la construcción de un módulo de comparación de métricas financieras.",

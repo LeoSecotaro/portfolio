@@ -23,6 +23,7 @@ export default function AboutSection() {
       <div className="glow-orb top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10" />
 
       <div className="section-container relative z-10">
+        <div className="profile-divider" aria-hidden="true" />
         
         {/* Section Header */}
         <motion.div
@@ -34,8 +35,14 @@ export default function AboutSection() {
           transition={{ duration: shouldReduceMotion ? 0.01 : 0.55, ease: 'easeOut' }}
         >
           <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-blue-400 font-semibold text-center block mb-2">
-            {t('section.profileEyebrow')}
+            {language === 'en' ? 'Profile / Engineering & Data' : 'Perfil / Ingeniería & Datos'}
           </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-6 leading-snug text-center">
+            {t('section.profileEyebrow')}
+          </h2>
+          <p className="text-sm sm:text-base text-slate-300 mt-1 leading-relaxed font-normal text-center max-w-2xl mx-auto">
+            {t('section.aboutDescription')}
+          </p>
         </motion.div>
 
         {/* Tabs Bar - Guaranteed Massive Separation via selector-spacing */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { 
   Code2, Database, Terminal, ShieldCheck, Cpu, 
   Sparkles, Layers, CheckCircle2 
@@ -18,6 +18,7 @@ const skillCategories = [
 export default function SkillsSection() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('desarrollo');
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section id="habilidades" className="w-full scroll-mt-36 pt-48 pb-36 sm:pt-56 sm:pb-48 relative bg-black/40 border-t border-white/10 flex flex-col items-center">
@@ -79,12 +80,16 @@ export default function SkillsSection() {
           transition={{ duration: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mt-8 sm:mt-12"
         >
-          {skills[activeTab]?.map((skill) => {
+          {skills[activeTab]?.map((skill, index) => {
             const proficiency = skill.level >= 80 ? 'Avanzado' : skill.level >= 60 ? 'Intermedio' : 'Básico';
 
             return (
-            <div
+            <motion.div
               key={skill.name}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.25 }}
+              transition={{ duration: shouldReduceMotion ? 0.01 : 0.38, delay: shouldReduceMotion ? 0 : index * 0.07, ease: 'easeOut' }}
               className="skill-card self-start apple-card glass-panel border border-white/15 hover:border-blue-500/50"
             >
               <div className="skill-card-header flex flex-col items-start gap-3 px-1 mb-0">
@@ -96,7 +101,7 @@ export default function SkillsSection() {
                   {proficiency}
                 </span>
               </div>
-            </div>
+            </motion.div>
             );
           })}
         </motion.div>

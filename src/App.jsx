@@ -141,9 +141,9 @@ export default function App() {
       {/* Main Single Page Content with Generous Section Spacing */}
       <main className="flex flex-col gap-12 sm:gap-16 md:gap-20 pb-16">
         <HeroSection onDownloadCV={handleDownloadCV} />
+        <ProjectsSection />
         <AboutSection />
         <ExperienceSection />
-        <ProjectsSection />
         <SkillsSection />
         <EducationSection />
         <ContactSection onDownloadCV={handleDownloadCV} />
