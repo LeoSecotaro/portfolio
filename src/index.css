@@ -2343,7 +2343,7 @@ html.dark .text-blue-gradient,
   .portfolio-app main > section { padding-block: 4rem; }
   .portfolio-app main > .editorial-hero { padding-top: 8.5rem; padding-bottom: 1rem; }
   .editorial-byline { font-size: .58rem; flex-wrap: wrap; }
-  .editorial-hero h1 { font-size: clamp(2.4rem, 10vw, 3.7rem); }
+  .editorial-hero h1 { font-size: clamp(2.4rem, 10vw, 3.7rem); letter-spacing: -.045em; word-spacing: .1em; }
   .editorial-hero-foot { flex-direction: column; font-size: .6rem; }
   .featured-copy { padding: 1.5rem; }
   .featured-visual { padding: 1rem; }
