@@ -258,13 +258,13 @@ export const projects = [
     ],
     techStack: ["React.js", "Ruby on Rails", "SQL / MySQL", "ETL", "Excel", "Sidekiq", "Redis"],
     gallery: [
+      { src: "/images/scsa/login.jpeg", alt: "Acceso al sistema" },
       { src: "/images/scsa/horarios.jpeg", alt: "Calendario de horarios médicos" },
       { src: "/images/scsa/dashboard.png", alt: "Dashboard operativo" },
       { src: "/images/scsa/ingresos-egresos.png", alt: "Ingresos y egresos" },
       { src: "/images/scsa/conciliacion.png", alt: "Conciliación financiera" },
       { src: "/images/scsa/detalle-conciliacion.png", alt: "Detalle de conciliación" },
-      { src: "/images/scsa/comparacion-obras-sociales.png", alt: "Comparación de obras sociales" },
-      { src: "/images/scsa/login.jpeg", alt: "Acceso al sistema" }
+      { src: "/images/scsa/comparacion-obras-sociales.png", alt: "Comparación de obras sociales" }
     ],
     galleryNotice: "Algunas capturas tienen información censurada para proteger datos sensibles y no públicos.",
     metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",

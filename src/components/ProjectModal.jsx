@@ -177,7 +177,7 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* Key Features List */}
             <div className="project-modal-section">
-              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 font-semibold mb-4">
+              <h3 className="project-modal-section-heading text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 font-semibold mb-4">
                 {t('common.keyFeatures')}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

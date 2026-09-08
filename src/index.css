@@ -2282,6 +2282,7 @@ html.dark .text-blue-gradient,
 .featured-sensitive-note, .project-gallery-notice { color: var(--text-muted); font-size: .72rem; line-height: 1.45; }
 .featured-sensitive-note { margin: -.65rem 0 0; }
 .project-gallery-notice { margin: 1rem auto 0; max-width: 42rem; text-align: center; }
+.project-modal-section-heading { word-spacing: .28em; }
 .portfolio-app #proyectos .project-card, .portfolio-app #habilidades .skill-card { border-radius: .5rem; box-shadow: none !important; }
 .portfolio-app #proyectos .project-card-banner { min-height: 150px; }
 .editorial-experience { border-block: 1px solid var(--border-strong); }
@@ -2344,6 +2345,8 @@ html.dark .text-blue-gradient,
   .portfolio-app main > .editorial-hero { padding-top: 8.5rem; padding-bottom: 1rem; }
   .editorial-byline { font-size: .58rem; flex-wrap: wrap; }
   .editorial-hero h1 { font-size: clamp(2.4rem, 10vw, 3.7rem); letter-spacing: -.045em; word-spacing: .1em; }
+  .hero-content-card .editorial-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .hero-content-card .editorial-button, .hero-content-card .editorial-link { width: 12rem; padding: 1rem 1.25rem; justify-content: space-between; }
   .editorial-hero-foot { flex-direction: column; font-size: .6rem; }
   .featured-copy { padding: 1.5rem; }
   .featured-visual { padding: 1rem; }

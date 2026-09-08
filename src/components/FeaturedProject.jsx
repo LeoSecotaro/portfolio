@@ -9,7 +9,8 @@ export default function FeaturedProject({ project, onOpen }) {
   const [view, setView] = useState(0);
   const reducedMotion = useReducedMotion();
   const views = en ? ['Medical scheduling', 'Financial data'] : ['Horarios médicos', 'Datos financieros'];
-  const screenshot = project.gallery[view];
+  const featuredImages = [project.gallery?.[1], project.gallery?.[2]].filter(Boolean);
+  const screenshot = featuredImages[view] || project.gallery?.[0];
   return (
     <motion.article
       className="featured-work"
@@ -29,7 +30,7 @@ export default function FeaturedProject({ project, onOpen }) {
       <div className="featured-visual">
         <div className="featured-switch" role="group" aria-label={en ? 'Project views' : 'Vistas del proyecto'}>{views.map((label, index) => <button type="button" key={label} aria-pressed={view === index} onClick={() => setView(index)}>{label}</button>)}</div>
         <button type="button" className="featured-image-button" onClick={onOpen} aria-label={en ? 'Open project details' : 'Abrir detalles del proyecto'}><img src={screenshot.src} alt={views[view]} loading="lazy" width="1440" height="900" /></button>
-        <div className="featured-caption"><span>{en ? 'Actual application screenshot' : 'Captura real de la aplicación'}</span><span>React / Rails / ETL</span></div>
+        <div className="featured-caption"><span>React / Rails / ETL</span></div>
         <p className="featured-sensitive-note">{en ? project.en?.galleryNotice : project.galleryNotice}</p>
       </div>
     </motion.article>
