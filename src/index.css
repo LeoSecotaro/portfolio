@@ -2344,7 +2344,7 @@ html.dark .text-blue-gradient,
   .portfolio-app main > section { padding-block: 4rem; }
   .portfolio-app main > .editorial-hero { padding-top: 8.5rem; padding-bottom: 1rem; }
   .editorial-byline { font-size: .58rem; flex-wrap: wrap; }
-  .editorial-hero h1 { font-size: clamp(2.4rem, 10vw, 3.7rem); letter-spacing: -.045em; word-spacing: .1em; }
+  .editorial-hero h1 { font-size: clamp(2.4rem, 10vw, 3.7rem); letter-spacing: -.04em; word-spacing: .15em; }
   .hero-content-card .editorial-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .hero-content-card .editorial-button, .hero-content-card .editorial-link { width: 12rem; padding: 1rem 1.25rem; justify-content: space-between; }
   .editorial-hero-foot { flex-direction: column; font-size: .6rem; }

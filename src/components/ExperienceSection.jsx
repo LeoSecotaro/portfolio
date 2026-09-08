@@ -10,7 +10,7 @@ export default function ExperienceSection() {
   return (
     <section id="experiencia" className="editorial-experience scroll-mt-36">
       <div className="section-container">
-        <div className="editorial-section-title"><p className="editorial-label">02 / {en ? 'Experience' : 'Trayectoria'}</p><h2>{en ? 'Engineering, in practice.' : 'Ingeniería, en la práctica.'}</h2></div>
+        <div className="editorial-section-title"><p className="editorial-label">02 / {en ? 'Experience' : 'Trayectoria'}</p><h2>{en ? 'Engineering, in practice.' : 'Ingeniería en la práctica.'}</h2></div>
         {experience.map((entry, index) => {
           const item = localize(entry, language);
           return <motion.article
