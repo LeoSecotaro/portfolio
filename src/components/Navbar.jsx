@@ -5,9 +5,9 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 const navItems = [
   { id: 'home', href: '#hero' },
+  { id: 'projects', href: '#proyectos' },
   { id: 'profile', href: '#perfil' },
   { id: 'experience', href: '#experiencia' },
-  { id: 'projects', href: '#proyectos' },
   { id: 'skills', href: '#habilidades' },
   { id: 'education', href: '#educacion' },
   { id: 'contact', href: '#contacto' },

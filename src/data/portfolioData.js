@@ -6,6 +6,7 @@ export const personalDetails = {
   title: "Ingeniero en Sistemas de Información",
   subtitle: "Full Stack Developer · Data & AI Engineer · Cybersecurity Specialist",
   location: "Guaymallén, Mendoza, Argentina",
+  nationality: "Argentina e italiana",
   email: "leonardosecotaro@gmail.com",
   phone: "+54 261 5712839",
   linkedin: "https://www.linkedin.com/in/leonardo-secotaro-ianardi/",
@@ -267,7 +268,7 @@ export const projects = [
       { src: "/images/scsa/comparacion-obras-sociales.png", alt: "Comparación de obras sociales" }
     ],
     galleryNotice: "Algunas capturas tienen información censurada para proteger datos sensibles y no públicos.",
-    metrics: "Horarios médicos centralizados y datos financieros normalizados para su comparación.",
+    metrics: "Un flujo de trabajo unificado para coordinar agendas médicas y tomar decisiones financieras con información consistente.",
     gradient: "from-neutral-900 to-indigo-600",
     icon: "Heart",
     en: {
@@ -276,7 +277,7 @@ export const projects = [
       summary: "An integrated system for medical schedules and financial information processing through Excel upload and normalization.",
       description: "A solution for Servicios de Cardiología SA that centralizes physician schedules, absences, and replacements through a custom interactive calendar. It also includes a financial ETL module that receives Excel files, normalizes the data, and compares it against previously uploaded records.",
       keyFeatures: ["A custom interactive calendar for planning physician schedules.", "Requirements gathering and logical solution design.", "Tracking absences, availability, and replacements.", "Excel-file upload and normalization through an ETL process.", "Comparison of uploaded financial information for operational analysis."],
-      metrics: "Centralized physician schedules and normalized financial data ready for comparison.",
+      metrics: "A unified workflow for coordinating medical schedules and making financial decisions with consistent information.",
       galleryNotice: "Some screenshots contain redacted information to protect sensitive, non-public data."
     }
   }
@@ -308,6 +309,9 @@ export const skills = {
   infraestructura: [
     { name: "Linux (Ubuntu Avanzado)", level: 95, tag: "Terminal / Bash" },
     { name: "Git / GitHub", level: 92, tag: "Control de Versiones" },
+    { name: "Jira", level: 75, tag: "Gestión Ágil" },
+    { name: "Trello", level: 80, tag: "Gestión Visual" },
+    { name: "Kanban", level: 85, tag: "Flujos de Trabajo" },
     { name: "AWS S3", level: 80, tag: "Cloud Storage" },
     { name: "Entornos Windows Server", level: 70, tag: "Soporte SW/HW" }
   ],

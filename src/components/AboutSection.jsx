@@ -186,6 +186,7 @@ export default function AboutSection() {
                   </h3>
                   <p className="location-description text-slate-200 text-base sm:text-lg leading-relaxed">
                     Residente en <strong className="text-white">Guaymallén, Mendoza, Argentina</strong>.
+                    Nacionalidad <strong className="text-white">{personalDetails.nationality}</strong>.
                     Disponible para trabajo remoto global, modalidad híbrida o presencial.
                   </p>
                 </div>

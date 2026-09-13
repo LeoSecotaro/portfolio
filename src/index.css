@@ -362,6 +362,13 @@ body,
   line-height: 1.2;
 }
 
+/* Keep education badges, icons, and course-tool pills flat and crisp. */
+.portfolio-app .education-badge,
+.portfolio-app .education-card-header > div:first-child,
+.portfolio-app .education-tool-pill {
+  box-shadow: none !important;
+}
+
 .course-content-tick {
   margin-top: 0.5rem !important;
 }

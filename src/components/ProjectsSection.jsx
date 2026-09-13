@@ -135,10 +135,10 @@ export default function ProjectsSection() {
 
                   {/* Top Badge Row */}
                   <div className="relative z-10 flex items-center justify-between gap-4 w-full">
-                    <span className="card-badge-capsule bg-white/15 backdrop-blur-md text-xs sm:text-sm font-sans text-white font-semibold border border-white/25 shadow-md tracking-wide">
+                    <span className="card-badge-capsule bg-white/15 backdrop-blur-md text-xs sm:text-sm font-sans text-white font-semibold border border-white/25 tracking-wide">
                       {project.badge}
                     </span>
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-lg shrink-0">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shrink-0">
                       <IconComp className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                   </div>
