@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 
 // Decorative UML sequence / BPMN diagrams drawn behind each section.
@@ -31,7 +31,7 @@ function SequenceDiagram({ spec, language }) {
   const lifelineTop = SEQ.top + SEQ.boxH;
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet">
+    <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" style={{ '--n': messages.length }}>
       {participants.map((participant, index) => (
         <g key={index} className="dg-fade" style={{ '--i': 0 }}>
           <rect x={x(index) - SEQ.boxW / 2} y={SEQ.top} width={SEQ.boxW} height={SEQ.boxH} rx="3" />
@@ -141,7 +141,7 @@ function BpmnDiagram({ spec: rawSpec, language }) {
   const order = Object.fromEntries(nodes.map((node, index) => [node.id, index]));
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet">
+    <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" style={{ '--n': nodes.length }}>
       {lanes.map((lane, index) => (
         <g key={index} className="dg-fade dg-lane" style={{ '--i': 0 }}>
           <rect x="1" y={lane.y} width={width - 2} height={lane.h} />
@@ -166,12 +166,37 @@ function BpmnDiagram({ spec: rawSpec, language }) {
   );
 }
 
+// Scroll-linked progress (0 → 1) written to `--p`: 0 when the diagram's top reaches the
+// bottom of the viewport, 1 when its centre is a little above the middle of the screen. Scrolling back
+// up runs it in reverse, so the diagram draws and undraws with the scroll position.
+function useScrollProgress(ref, enabled) {
+  useEffect(() => {
+    const element = ref.current;
+    if (!enabled || !element) return undefined;
+
+    const update = () => {
+      const { top, height } = element.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress = (viewport * 0.95 - top) / (viewport * 0.55 + height / 2);
+      element.style.setProperty('--p', Math.min(1, Math.max(0, progress)).toFixed(4));
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [ref, enabled]);
+}
+
 export default function DiagramBackdrop({ spec, className = '' }) {
   const { language } = useLanguage();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.25 });
   const shouldReduceMotion = useReducedMotion();
-  const state = shouldReduceMotion ? 'is-static' : isInView ? 'is-drawing' : '';
+  useScrollProgress(ref, !shouldReduceMotion);
+  const state = shouldReduceMotion ? 'is-static' : 'is-scrolling';
   const Diagram = spec.type === 'sequence' ? SequenceDiagram : BpmnDiagram;
 
   return (
