@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 import { personalDetails, languages, softSkills } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { aboutDiagram } from '../data/diagramData';
 
 export default function AboutSection() {
   const { language, t } = useLanguage();
@@ -19,8 +21,8 @@ export default function AboutSection() {
   return (
     <section id="perfil" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       
-      {/* Background glow */}
-      <div className="glow-orb top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10" />
+      {/* Background BPMN process */}
+      <DiagramBackdrop spec={aboutDiagram} className="diagram-backdrop--about" />
 
       <div className="section-container relative z-10">
         <div className="profile-divider" aria-hidden="true" />

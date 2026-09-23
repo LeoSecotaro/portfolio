@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { GraduationCap, Award, Calendar, CheckCircle2, BookOpen, Wrench, X, ArrowRight } from 'lucide-react';
 import { education } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { educationDiagram } from '../data/diagramData';
 
 export default function EducationSection() {
   const { t } = useLanguage();
@@ -18,6 +20,7 @@ export default function EducationSection() {
 
   return (
     <section id="educacion" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
+      <DiagramBackdrop spec={educationDiagram} className="diagram-backdrop--education" />
       <div className="section-container">
         <div className="education-divider" aria-hidden="true" />
         

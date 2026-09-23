@@ -8,6 +8,8 @@ import { projects } from '../data/portfolioData';
 import ProjectModal from './ProjectModal';
 import FeaturedProject from './FeaturedProject';
 import { localize, useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { projectsDiagram } from '../data/diagramData';
 
 const iconMap = {
   Home: Home,
@@ -54,8 +56,8 @@ export default function ProjectsSection() {
   return (
     <section id="proyectos" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
       
-      {/* Ambient background light */}
-      <div className="glow-orb top-1/3 right-0 w-[550px] h-[550px] bg-indigo-600/15" />
+      {/* Background sequence diagram */}
+      <DiagramBackdrop spec={projectsDiagram} className="diagram-backdrop--projects" />
 
       <div className="section-container relative z-10">
         

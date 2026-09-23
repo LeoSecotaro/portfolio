@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Terminal, Send, Sparkles, CornerDownLeft, Trash2, Code2 } from 'lucide-react';
 import { personalDetails } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { terminalDiagram } from '../data/diagramData';
 
 const initialOutput = [
   { type: 'system', text: ' Leonardo Secotaro Pro Terminal (v2.6.0-ISI)' },
@@ -114,6 +116,7 @@ LinkedIn : ${personalDetails.linkedin}`
 
   return (
     <section id="terminal" className="terminal-section w-full scroll-mt-36 pt-44 pb-36 sm:pt-56 sm:pb-48 relative bg-black/50 border-t border-white/10 flex flex-col items-center">
+      <DiagramBackdrop spec={terminalDiagram} className="diagram-backdrop--terminal" />
       <div className="section-container terminal-content">
         
         {/* Section Header */}

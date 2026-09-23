@@ -2,6 +2,8 @@ import React from 'react';
 import { Mail, Phone, Download } from 'lucide-react';
 import { personalDetails } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { contactDiagram } from '../data/diagramData';
 
 const LinkedinIcon = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -15,7 +17,7 @@ export default function ContactSection({ onDownloadCV }) {
   const { t } = useLanguage();
   return (
     <section id="contacto" className="w-full scroll-mt-36 py-36 sm:py-48 relative overflow-visible flex flex-col items-center">
-      <div className="glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15" />
+      <DiagramBackdrop spec={contactDiagram} className="diagram-backdrop--contact" />
 
       <div className="section-container contact-container relative z-10">
         <div className="contact-divider" aria-hidden="true" />

@@ -1,5 +1,7 @@
 ﻿import { experience } from '../data/portfolioData';
 import { localize, useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { experienceDiagram } from '../data/diagramData';
 
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -9,6 +11,7 @@ export default function ExperienceSection() {
   const shouldReduceMotion = useReducedMotion();
   return (
     <section id="experiencia" className="editorial-experience scroll-mt-36">
+      <DiagramBackdrop spec={experienceDiagram} className="diagram-backdrop--experience" />
       <div className="section-container">
         <div className="editorial-section-title"><p className="editorial-label">02 / {en ? 'Experience' : 'Trayectoria'}</p><h2>{en ? 'Engineering, in practice.' : 'Ingeniería en la práctica.'}</h2></div>
         {experience.map((entry, index) => {

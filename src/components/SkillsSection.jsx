@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 import { skills } from '../data/portfolioData';
 import { useLanguage } from '../i18n/LanguageContext';
+import DiagramBackdrop from './DiagramBackdrop';
+import { skillsDiagram } from '../data/diagramData';
 
 const skillCategories = [
   { key: 'desarrollo', labelKey: 'development', icon: Code2, color: 'text-blue-400', bg: 'bg-blue-500/20' },
@@ -23,8 +25,8 @@ export default function SkillsSection() {
   return (
     <section id="habilidades" className="w-full scroll-mt-36 pt-48 pb-36 sm:pt-56 sm:pb-48 relative bg-black/40 border-t border-white/10 flex flex-col items-center">
       
-      {/* Background glow */}
-      <div className="glow-orb top-1/2 right-1/4 w-[450px] h-[450px] bg-cyan-600/10" />
+      {/* Background sequence diagram */}
+      <DiagramBackdrop spec={skillsDiagram} className="diagram-backdrop--skills" />
 
       <div className="section-container relative z-10">
         
