@@ -8,7 +8,7 @@ import { terminalDiagram } from '../data/diagramData';
 
 const initialOutput = [
   { type: 'system', text: ' Leonardo Secotaro Pro Terminal (v2.6.0-ISI)' },
-  { type: 'system', text: 'Escribí "help" o seleccioná una de las sugerencias rápidas para consultar datos.' }
+  { type: 'system', textKey: 'terminal.welcome' }
 ];
 
 export default function InteractiveTerminal({ onDownloadCV }) {
@@ -155,19 +155,21 @@ LinkedIn : ${personalDetails.linkedin}`
             <span className="font-mono text-slate-300 font-medium">bash — leonardo@utn-isi:~</span>
             <button
               onClick={() => setHistory([])}
+              type="button"
               className="text-slate-400 hover:text-white transition-colors p-1"
-              title="Clear terminal"
+              title={t('terminal.clear')}
+              aria-label={t('terminal.clear')}
             >
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
 
           {/* Console Stream */}
-          <div ref={terminalOutputRef} className="h-72 sm:h-80 overflow-y-auto font-mono text-xs sm:text-base space-y-2.5 pr-2">
+          <div ref={terminalOutputRef} role="log" aria-live="polite" className="h-72 sm:h-80 overflow-y-auto font-mono text-xs sm:text-base space-y-2.5 pr-2">
             {history.map((item, idx) => (
               <div key={idx} className="leading-relaxed">
                 {item.type === 'system' && (
-                  <div className="text-slate-400 font-semibold">{item.text}</div>
+                  <div className="text-slate-400 font-semibold">{item.textKey ? t(item.textKey) : item.text}</div>
                 )}
                 {item.type === 'input' && (
                   <div className="text-blue-400 font-bold">{item.text}</div>
@@ -182,17 +184,22 @@ LinkedIn : ${personalDetails.linkedin}`
           </div>
 
           {/* Form Input Line */}
-          <form onSubmit={handleSubmit} className="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+          <form onSubmit={handleSubmit} className="terminal-form mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
             <span className="text-blue-400 font-mono font-bold text-sm sm:text-base">$</span>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Escribí 'help' o un comando..."
-              className="flex-1 bg-transparent border-none outline-none text-xs sm:text-base text-white font-mono placeholder:text-slate-500"
+              placeholder={t('terminal.placeholder')}
+              aria-label={t('terminal.inputLabel')}
+              autoComplete="off"
+              spellCheck={false}
+              className="terminal-input flex-1 bg-transparent border-none text-xs sm:text-base text-white font-mono placeholder:text-slate-500"
             />
             <button
               type="submit"
+              aria-label={t('terminal.submit')}
+              title={t('terminal.submit')}
               className="p-2.5 rounded-xl bg-blue-600/40 hover:bg-blue-600 text-white transition-colors cursor-pointer"
             >
               <CornerDownLeft className="w-4 h-4 sm:w-5 sm:h-5" />

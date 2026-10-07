@@ -210,7 +210,6 @@ body,
   color: #ffffff !important;
   background: #6f5d44 !important;
   border-color: #6f5d44 !important;
-  outline: none;
 }
 
 .portfolio-app[data-theme="dark"] .terminal-command {
@@ -691,7 +690,6 @@ body,
   .mobile-menu-link:focus-visible {
     border-color: var(--border-subtle);
     background: rgba(111, 93, 68, 0.09);
-    outline: none;
   }
 
   .mobile-menu-link svg {
@@ -1977,8 +1975,16 @@ html[data-theme="light"] #root {
   transform: translateY(-50%) scale(1.06);
 }
 
-.project-gallery-dots button {
-  height: 0.5rem;
+/* 24px hit area (WCAG 2.2 target size) around the small visual dot. */
+.project-gallery-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0 0.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
 }
 
 [data-theme="light"] .project-gallery-control {
@@ -2584,3 +2590,15 @@ html.dark .text-blue-gradient,
 .portfolio-app[data-theme="dark"] .hero-content-card .editorial-link {
   color: #f5f5f7;
 }
+
+/* Visible keyboard focus for every interactive control (WCAG 2.4.7). */
+:where(a[href], button, input, textarea, select, summary, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+.terminal-input:focus-visible {
+  outline-offset: 6px;
+  border-radius: 0.25rem;
+}
+

@@ -4,8 +4,8 @@ import {
   User, CheckCircle, Globe, Lightbulb, 
   MapPin, Languages, Award, Sparkles 
 } from 'lucide-react';
-import { personalDetails, languages, softSkills } from '../data/portfolioData';
-import { useLanguage } from '../i18n/LanguageContext';
+import { personalDetails, languages, softSkills, softSkillsEn } from '../data/portfolioData';
+import { localize, useLanguage } from '../i18n/LanguageContext';
 import DiagramBackdrop from './DiagramBackdrop';
 import { aboutDiagram } from '../data/diagramData';
 
@@ -113,15 +113,15 @@ export default function AboutSection() {
                         <span className="text-base font-bold text-white block mb-1 leading-snug">Universidad Tecnológica Nacional (UTN)</span>
                       </div>
                       <div className="mt-4 pt-3.5 border-t border-white/10">
-                        <span className="text-xs text-slate-300 block font-medium">Ingeniería en Sistemas de Información</span>
+                        <span className="text-xs text-slate-300 block font-medium">{language === 'en' ? 'Information Systems Engineering' : 'Ingeniería en Sistemas de Información'}</span>
                         <span className="text-xs font-mono text-blue-400 font-semibold block mt-1">(2021 — 2026)</span>
                       </div>
                     </div>
 
                     <div className="about-subcard rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between min-h-[160px]">
                       <div>
-                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">Enfoque profesional</span>
-                        <span className="text-base font-bold text-white block mb-1 leading-snug">Análisis, Full Stack & Datos</span>
+                        <span className="text-xs font-mono text-emerald-400 font-bold block mb-1.5 uppercase">{t('common.professionalFocus')}</span>
+                        <span className="text-base font-bold text-white block mb-1 leading-snug">{language === 'en' ? 'Analysis, Full Stack & Data' : 'Análisis, Full Stack & Datos'}</span>
                       </div>
                       <div className="mt-4 pt-3.5 border-t border-white/10">
                         <span className="text-xs text-slate-300 block font-medium">Python · Rails · React</span>
@@ -139,11 +139,11 @@ export default function AboutSection() {
             <div className="soft-skills-panel lg:col-span-12 glass-panel rounded-3xl border border-white/15">
               <h3 className="soft-skills-title text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-amber-400" />
-                <span>Habilidades Blandas & Enfoque de Trabajo</span>
+                <span>{t('common.softSkillsTitle')}</span>
               </h3>
 
               <div className="soft-skills-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {softSkills.map((skill, idx) => (
+                {(language === 'en' ? softSkillsEn : softSkills).map((skill, idx) => (
                   <div 
                     key={idx}
                     className="soft-skill-card rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4 hover:border-blue-500/40 transition-colors"
@@ -162,10 +162,10 @@ export default function AboutSection() {
               <div className="languages-card glass-panel rounded-3xl border border-white/15">
                 <h3 className="about-panel-title text-2xl font-bold text-white flex items-center gap-3">
                   <Languages className="w-6 h-6 text-cyan-400" />
-                  <span>Idiomas</span>
+                  <span>{t('common.languagesTitle')}</span>
                 </h3>
                 <div className="languages-list">
-                  {languages.map((lang, idx) => (
+                  {languages.map((item) => localize(item, language)).map((lang, idx) => (
                     <div key={idx} className="language-item rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
                       <div>
                         <span className="font-bold text-white text-lg block">{lang.language}</span>
@@ -184,17 +184,17 @@ export default function AboutSection() {
                 <div>
                   <h3 className="about-panel-title text-2xl font-bold text-white flex items-center gap-3">
                     <MapPin className="w-6 h-6 text-rose-400" />
-                    <span>Ubicación & Disponibilidad</span>
+                    <span>{t('common.locationTitle')}</span>
                   </h3>
                   <p className="location-description text-slate-200 text-base sm:text-lg leading-relaxed">
-                    Residente en <strong className="text-white">Guaymallén, Mendoza, Argentina</strong>.
-                    Nacionalidad <strong className="text-white">{personalDetails.nationality}</strong>.
-                    Disponible para trabajo remoto global, modalidad híbrida o presencial.
+                    {t('common.locationResident')} <strong className="text-white">Guaymallén, Mendoza, Argentina</strong>.{' '}
+                    {t('common.locationNationality')} <strong className="text-white">{language === 'en' ? 'Argentine and Italian' : personalDetails.nationality}</strong>.{' '}
+                    {t('common.locationAvailability')}
                   </p>
                 </div>
                 <div className="availability-badge rounded-2xl bg-blue-600/15 border border-blue-500/40 flex items-center justify-between">
-                  <span className="text-xs sm:text-sm font-mono text-blue-200 font-semibold">Zona Horaria: ART (UTC-3)</span>
-                  <span className="text-xs sm:text-sm font-bold text-blue-400">Flexibilidad Horaria</span>
+                  <span className="text-xs sm:text-sm font-mono text-blue-200 font-semibold">{t('common.timezone')}</span>
+                  <span className="text-xs sm:text-sm font-bold text-blue-400">{t('common.flexibleHours')}</span>
                 </div>
               </div>
             </div>

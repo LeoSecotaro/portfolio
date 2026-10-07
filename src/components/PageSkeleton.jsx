@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Bone = ({ className = '' }) => <div className={`skeleton-bone ${className}`} />;
 
 export default function PageSkeleton() {
+  const { t } = useLanguage();
   return (
     <motion.div
       className="page-skeleton"
@@ -12,7 +14,7 @@ export default function PageSkeleton() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.28 }}
       role="status"
-      aria-label="Cargando portafolio"
+      aria-label={t('common.loading')}
     >
       <div className="skeleton-navbar">
         <div className="skeleton-nav-inner">

@@ -32,6 +32,15 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
   };
 
   useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
@@ -162,9 +171,12 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
 
           {/* Mobile Menu Toggle */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-menu-toggle lg:hidden inline-flex items-center justify-center rounded-full transition-colors"
-            aria-label={t('nav.menu')}
+            aria-label={mobileMenuOpen ? t('common.closeMenu') : t('nav.menu')}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -179,6 +191,7 @@ export default function Navbar({ onDownloadCV, theme, onToggleTheme }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            id="mobile-menu"
             className="mobile-menu-drawer lg:hidden flex flex-col"
           >
             {navItems.map((item) => (

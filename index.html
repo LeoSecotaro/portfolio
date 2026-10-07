@@ -1,9 +1,22 @@
 <!doctype html>
-<html lang="es" class="dark scroll-smooth">
+<html lang="es" class="light scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d2a26'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Apply the saved theme before first paint to avoid a light/dark flash.
+      (function () {
+        var theme = 'light';
+        try { theme = localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light'; } catch (e) {}
+        var root = document.documentElement;
+        root.classList.remove('dark', 'light');
+        root.classList.add(theme);
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        root.style.backgroundColor = theme === 'light' ? '#ccc5b7' : '#0a0a0a';
+      })();
+    </script>
     <title>Leonardo Secotaro — Ingeniero en Sistemas & Full Stack Developer</title>
     <meta name="description" content="Portfolio profesional de Leonardo Secotaro Ianardi. Ingeniero en Sistemas de Información especializado en Full Stack (React, Python, Rails), Data Engineering (ETL, RAG, Airflow) y Ciberseguridad/SOC." />
     
@@ -12,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-black text-slate-100 antialiased selection:bg-blue-500/30 selection:text-blue-200 overflow-x-hidden font-sans">
+  <body class="antialiased selection:bg-blue-500/30 selection:text-blue-200 overflow-x-hidden font-sans">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

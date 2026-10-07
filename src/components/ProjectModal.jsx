@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, CheckCircle, ExternalLink, Database, 
@@ -9,6 +9,50 @@ import { useLanguage } from '../i18n/LanguageContext';
 export default function ProjectModal({ project, onClose }) {
   const { language, t } = useLanguage();
   const [activeImage, setActiveImage] = useState(0);
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+
+  // Lock page scroll, move focus into the dialog, keep Tab inside it and
+  // restore focus to the element that opened it once the dialog closes.
+  useEffect(() => {
+    const previouslyFocused = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus({ preventScroll: true });
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onCloseRef.current();
+        return;
+      }
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+
+      const focusable = [...dialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+      )].filter((element) => element.offsetParent !== null);
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus({ preventScroll: true });
+    };
+  }, []);
 
   useEffect(() => {
     setActiveImage(0);
@@ -34,8 +78,7 @@ export default function ProjectModal({ project, onClose }) {
   };
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-start justify-center p-2 sm:items-center sm:p-6 lg:p-8 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-start justify-center p-2 sm:items-center sm:p-6 lg:p-8 overflow-y-auto">
         
         {/* Backdrop filter blur overlay */}
         <motion.div
@@ -52,6 +95,10 @@ export default function ProjectModal({ project, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.1 }}
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="project-modal-title"
           className="project-modal relative w-full max-w-4xl max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-3rem)] glass-panel border border-white/20 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden z-10 my-0 sm:my-auto bg-slate-950 text-white flex flex-col"
         >
           {/* Header Banner with Gradient Accent */}
@@ -64,6 +111,8 @@ export default function ProjectModal({ project, onClose }) {
               </span>
 
               <button
+                ref={closeButtonRef}
+                type="button"
                 onClick={onClose}
                 className="w-10 h-10 rounded-full bg-black/50 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
                 aria-label={t('common.closePreview')}
@@ -73,7 +122,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
 
             <div className="relative z-10">
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+              <h2 id="project-modal-title" className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                 {project.title}
               </h2>
               <p className="text-xs sm:text-sm text-slate-200 font-medium">
@@ -126,7 +175,7 @@ export default function ProjectModal({ project, onClose }) {
                         type="button"
                         onClick={showPreviousImage}
                         className="project-gallery-control absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
-                        aria-label={language === 'es' ? 'Imagen anterior' : 'Previous image'}
+                        aria-label={t('common.previousImage')}
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
@@ -134,7 +183,7 @@ export default function ProjectModal({ project, onClose }) {
                         type="button"
                         onClick={showNextImage}
                         className="project-gallery-control absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/70 text-white border border-white/20"
-                        aria-label={language === 'es' ? 'Imagen siguiente' : 'Next image'}
+                        aria-label={t('common.nextImage')}
                       >
                         <ChevronRight className="w-5 h-5" />
                       </button>
@@ -142,15 +191,18 @@ export default function ProjectModal({ project, onClose }) {
                   )}
                 </div>
 
-                <div className="project-gallery-dots flex items-center justify-center gap-2 mt-4">
+                <div className="project-gallery-dots flex items-center justify-center mt-3">
                   {gallery.map((image, index) => (
                     <button
                       key={image.src}
                       type="button"
                       onClick={() => setActiveImage(index)}
-                      className={`rounded-full transition-all ${index === activeImage ? 'w-6 bg-blue-400' : 'w-2 bg-white/30 hover:bg-white/60'}`}
-                      aria-label={`${language === 'es' ? 'Ver' : 'View'} ${image.alt}`}
-                    />
+                      className="project-gallery-dot group"
+                      aria-label={`${t('common.viewImage')} ${image.alt}`}
+                      aria-current={index === activeImage ? 'true' : undefined}
+                    >
+                      <span className={`block h-2 rounded-full transition-all ${index === activeImage ? 'w-6 bg-blue-400' : 'w-2 bg-white/30 group-hover:bg-white/60'}`} />
+                    </button>
                   ))}
                 </div>
                 <p className="mt-3 text-center text-xs sm:text-sm font-mono text-slate-400">
@@ -233,6 +285,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
 
             <button
+              type="button"
               onClick={onClose}
               className="apple-btn-secondary py-2.5 px-6 text-xs sm:text-sm font-semibold cursor-pointer"
             >
@@ -241,7 +294,6 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
         </motion.div>
-      </div>
-    </AnimatePresence>
+    </div>
   );
 }

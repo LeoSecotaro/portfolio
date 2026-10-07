@@ -15,7 +15,14 @@ import { useLanguage } from './i18n/LanguageContext';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    try {
+      const storedTheme = localStorage.getItem('portfolio-theme');
+      return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+    } catch {
+      return 'light';
+    }
+  });
   const { language } = useLanguage();
 
   useEffect(() => {
@@ -84,20 +91,23 @@ export default function App() {
     setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
   };
 
-  // Always open the portfolio from its hero section rather than restoring a prior scroll position.
+  // Open shared deep links (e.g. #proyectos) at their section; otherwise always
+  // start from the hero rather than restoring a prior scroll position.
   useLayoutEffect(() => {
     window.history.scrollRestoration = 'manual';
-    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#hero`);
+    const requestedId = decodeURIComponent(window.location.hash.slice(1));
+    const targetId = requestedId && document.getElementById(requestedId) ? requestedId : 'hero';
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${targetId}`);
 
-    const scrollToHero = () => {
+    const scrollToTarget = () => {
       const previousScrollBehavior = document.documentElement.style.scrollBehavior;
       document.documentElement.style.scrollBehavior = 'auto';
-      document.getElementById('hero')?.scrollIntoView({ block: 'start' });
+      document.getElementById(targetId)?.scrollIntoView({ block: 'start' });
       document.documentElement.style.scrollBehavior = previousScrollBehavior;
     };
 
-    const frameId = window.requestAnimationFrame(scrollToHero);
-    const timeoutId = window.setTimeout(scrollToHero, 100);
+    const frameId = window.requestAnimationFrame(scrollToTarget);
+    const timeoutId = window.setTimeout(scrollToTarget, 100);
 
     return () => {
       window.cancelAnimationFrame(frameId);

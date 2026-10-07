@@ -368,8 +368,8 @@ export const education = [
 ];
 
 export const languages = [
-  { language: "Español", level: "Nativo", badge: "Lengua Materna" },
-  { language: "Inglés", level: "Intermedio-Alto (B2)", badge: "Profesional Técnico" }
+  { language: "Español", level: "Nativo", badge: "Lengua Materna", en: { language: "Spanish", level: "Native", badge: "Mother Tongue" } },
+  { language: "Inglés", level: "Intermedio-Alto (B2)", badge: "Profesional Técnico", en: { language: "English", level: "Upper-Intermediate (B2)", badge: "Technical Professional" } }
 ];
 
 export const softSkills = [
@@ -379,4 +379,13 @@ export const softSkills = [
   "Adaptabilidad al cambio",
   "Comunicación técnica efectiva",
   "Pensamiento analítico de negocios"
+];
+
+export const softSkillsEn = [
+  "Problem solving",
+  "Resilience and patience",
+  "Collaborative teamwork",
+  "Adaptability to change",
+  "Effective technical communication",
+  "Analytical business thinking"
 ];
